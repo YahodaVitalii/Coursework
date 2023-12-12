@@ -372,6 +372,7 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\qt_config.prf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\exclusive_builds.prf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\common\msvc-version.conf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\toolchain.prf \
@@ -403,7 +404,6 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Gui.prl \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Core.prl \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6EntryPoint.prl \
-		.qmake.stash \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\build_pass.prf \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Widgetsd.prl \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Guid.prl \
@@ -698,6 +698,7 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\qt_config.prf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\exclusive_builds.prf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\common\msvc-version.conf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\toolchain.prf:
@@ -729,7 +730,6 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Gui.prl:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Core.prl:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6EntryPoint.prl:
-.qmake.stash:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\build_pass.prf:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Widgetsd.prl:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Guid.prl:

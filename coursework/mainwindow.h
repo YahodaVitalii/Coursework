@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "user.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +16,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_SingIn_SIngUp_clicked();
+
+    void on_pushButton_SingUp_SIngIn_Up_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QVector<User*> audiobook;
 };
 #endif // MAINWINDOW_H
