@@ -21,8 +21,25 @@ private slots:
 
     void on_pushButton_SingUp_SIngIn_Up_clicked();
 
+    void on_pushButton_SingIn_SIngIn_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_Accounts_create_clicked();
+
+    void on_pushButton_Accounts_add_clicked();
+
+
+    void on_pushButton_Recharging_clicked();
+
+    void on_pushButton_Accounts_Recharge_clicked();
+
+    void on_pushButton_Account_Chose_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QVector<User*> audiobook;
+    User* currentUser = new User(1,"1","1","1","1",1);
+    Account* currentAccount;
+    QVector<User*> users;
 };
 #endif // MAINWINDOW_H
