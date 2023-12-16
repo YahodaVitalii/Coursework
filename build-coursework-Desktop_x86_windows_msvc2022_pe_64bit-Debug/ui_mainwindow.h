@@ -21,6 +21,8 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -94,13 +96,35 @@ public:
     QLabel *label_username_3;
     QLabel *label_userLogin2;
     QHBoxLayout *horizontalLayout_9;
-    QTabWidget *tabWidget_Accounts_2;
+    QTabWidget *tabWidget_Paymants;
     QWidget *tab_3;
+    QVBoxLayout *verticalLayout_28;
+    QHBoxLayout *horizontalLayout_20;
     QLabel *label_13;
     QComboBox *comboBox_Payments;
+    QPushButton *pushButton_Payments_ChosePaymant;
+    QHBoxLayout *horizontalLayout_21;
+    QLabel *label_3;
+    QLabel *label_Paymants_amount;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *label_19;
+    QLabel *label_Paymants_date;
+    QVBoxLayout *verticalLayout_27;
+    QLabel *label_26;
+    QTextBrowser *textBrowser;
     QPushButton *pushButton_Payments_add;
     QWidget *tab_4;
-    QPushButton *pushButton_Payments_create;
+    QVBoxLayout *verticalLayout_30;
+    QHBoxLayout *horizontalLayout_24;
+    QLabel *label_27;
+    QLineEdit *lineEdit_Payments_name;
+    QHBoxLayout *horizontalLayout_25;
+    QLabel *label_29;
+    QLineEdit *lineEdit_Payments_amount;
+    QVBoxLayout *verticalLayout_29;
+    QLabel *label_28;
+    QTextEdit *textEdit_Payments_description;
+    QPushButton *pushButton_Payments_pay;
     QVBoxLayout *verticalLayout_10;
     QLabel *label_15;
     QTableView *tableView_payments;
@@ -493,28 +517,140 @@ public:
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName("horizontalLayout_9");
-        tabWidget_Accounts_2 = new QTabWidget(tab_payments);
-        tabWidget_Accounts_2->setObjectName("tabWidget_Accounts_2");
+        tabWidget_Paymants = new QTabWidget(tab_payments);
+        tabWidget_Paymants->setObjectName("tabWidget_Paymants");
         tab_3 = new QWidget();
         tab_3->setObjectName("tab_3");
+        verticalLayout_28 = new QVBoxLayout(tab_3);
+        verticalLayout_28->setObjectName("verticalLayout_28");
+        horizontalLayout_20 = new QHBoxLayout();
+        horizontalLayout_20->setObjectName("horizontalLayout_20");
         label_13 = new QLabel(tab_3);
         label_13->setObjectName("label_13");
-        label_13->setGeometry(QRect(10, 10, 71, 21));
+
+        horizontalLayout_20->addWidget(label_13);
+
         comboBox_Payments = new QComboBox(tab_3);
         comboBox_Payments->setObjectName("comboBox_Payments");
-        comboBox_Payments->setGeometry(QRect(80, 0, 161, 31));
+
+        horizontalLayout_20->addWidget(comboBox_Payments);
+
+        pushButton_Payments_ChosePaymant = new QPushButton(tab_3);
+        pushButton_Payments_ChosePaymant->setObjectName("pushButton_Payments_ChosePaymant");
+
+        horizontalLayout_20->addWidget(pushButton_Payments_ChosePaymant);
+
+
+        verticalLayout_28->addLayout(horizontalLayout_20);
+
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setObjectName("horizontalLayout_21");
+        label_3 = new QLabel(tab_3);
+        label_3->setObjectName("label_3");
+
+        horizontalLayout_21->addWidget(label_3);
+
+        label_Paymants_amount = new QLabel(tab_3);
+        label_Paymants_amount->setObjectName("label_Paymants_amount");
+
+        horizontalLayout_21->addWidget(label_Paymants_amount);
+
+
+        verticalLayout_28->addLayout(horizontalLayout_21);
+
+        horizontalLayout_23 = new QHBoxLayout();
+        horizontalLayout_23->setObjectName("horizontalLayout_23");
+        label_19 = new QLabel(tab_3);
+        label_19->setObjectName("label_19");
+
+        horizontalLayout_23->addWidget(label_19);
+
+        label_Paymants_date = new QLabel(tab_3);
+        label_Paymants_date->setObjectName("label_Paymants_date");
+
+        horizontalLayout_23->addWidget(label_Paymants_date);
+
+
+        verticalLayout_28->addLayout(horizontalLayout_23);
+
+        verticalLayout_27 = new QVBoxLayout();
+        verticalLayout_27->setObjectName("verticalLayout_27");
+        label_26 = new QLabel(tab_3);
+        label_26->setObjectName("label_26");
+
+        verticalLayout_27->addWidget(label_26);
+
+        textBrowser = new QTextBrowser(tab_3);
+        textBrowser->setObjectName("textBrowser");
+
+        verticalLayout_27->addWidget(textBrowser);
+
+
+        verticalLayout_28->addLayout(verticalLayout_27);
+
         pushButton_Payments_add = new QPushButton(tab_3);
         pushButton_Payments_add->setObjectName("pushButton_Payments_add");
-        pushButton_Payments_add->setGeometry(QRect(40, 210, 80, 24));
-        tabWidget_Accounts_2->addTab(tab_3, QString());
+
+        verticalLayout_28->addWidget(pushButton_Payments_add);
+
+        tabWidget_Paymants->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName("tab_4");
-        pushButton_Payments_create = new QPushButton(tab_4);
-        pushButton_Payments_create->setObjectName("pushButton_Payments_create");
-        pushButton_Payments_create->setGeometry(QRect(40, 210, 80, 24));
-        tabWidget_Accounts_2->addTab(tab_4, QString());
+        verticalLayout_30 = new QVBoxLayout(tab_4);
+        verticalLayout_30->setObjectName("verticalLayout_30");
+        horizontalLayout_24 = new QHBoxLayout();
+        horizontalLayout_24->setObjectName("horizontalLayout_24");
+        label_27 = new QLabel(tab_4);
+        label_27->setObjectName("label_27");
 
-        horizontalLayout_9->addWidget(tabWidget_Accounts_2);
+        horizontalLayout_24->addWidget(label_27);
+
+        lineEdit_Payments_name = new QLineEdit(tab_4);
+        lineEdit_Payments_name->setObjectName("lineEdit_Payments_name");
+
+        horizontalLayout_24->addWidget(lineEdit_Payments_name);
+
+
+        verticalLayout_30->addLayout(horizontalLayout_24);
+
+        horizontalLayout_25 = new QHBoxLayout();
+        horizontalLayout_25->setObjectName("horizontalLayout_25");
+        label_29 = new QLabel(tab_4);
+        label_29->setObjectName("label_29");
+
+        horizontalLayout_25->addWidget(label_29);
+
+        lineEdit_Payments_amount = new QLineEdit(tab_4);
+        lineEdit_Payments_amount->setObjectName("lineEdit_Payments_amount");
+
+        horizontalLayout_25->addWidget(lineEdit_Payments_amount);
+
+
+        verticalLayout_30->addLayout(horizontalLayout_25);
+
+        verticalLayout_29 = new QVBoxLayout();
+        verticalLayout_29->setObjectName("verticalLayout_29");
+        label_28 = new QLabel(tab_4);
+        label_28->setObjectName("label_28");
+
+        verticalLayout_29->addWidget(label_28);
+
+        textEdit_Payments_description = new QTextEdit(tab_4);
+        textEdit_Payments_description->setObjectName("textEdit_Payments_description");
+
+        verticalLayout_29->addWidget(textEdit_Payments_description);
+
+
+        verticalLayout_30->addLayout(verticalLayout_29);
+
+        pushButton_Payments_pay = new QPushButton(tab_4);
+        pushButton_Payments_pay->setObjectName("pushButton_Payments_pay");
+
+        verticalLayout_30->addWidget(pushButton_Payments_pay);
+
+        tabWidget_Paymants->addTab(tab_4, QString());
+
+        horizontalLayout_9->addWidget(tabWidget_Paymants);
 
         verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setObjectName("verticalLayout_10");
@@ -855,8 +991,8 @@ public:
         retranslateUi(MainWindow);
 
         tabWidget->setCurrentIndex(1);
-        tabWidget_Accounts->setCurrentIndex(1);
-        tabWidget_Accounts_2->setCurrentIndex(0);
+        tabWidget_Accounts->setCurrentIndex(2);
+        tabWidget_Paymants->setCurrentIndex(1);
         tabWidget_user->setCurrentIndex(2);
 
 
@@ -894,11 +1030,20 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab_accounts), QCoreApplication::translate("MainWindow", "Accounts", nullptr));
         label_username_3->setText(QString());
         label_userLogin2->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
-        label_13->setText(QCoreApplication::translate("MainWindow", "Account:", nullptr));
-        pushButton_Payments_add->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
-        tabWidget_Accounts_2->setTabText(tabWidget_Accounts_2->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
-        pushButton_Payments_create->setText(QCoreApplication::translate("MainWindow", "Create", nullptr));
-        tabWidget_Accounts_2->setTabText(tabWidget_Accounts_2->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
+        label_13->setText(QCoreApplication::translate("MainWindow", "Info about Payment:", nullptr));
+        pushButton_Payments_ChosePaymant->setText(QCoreApplication::translate("MainWindow", "Chose", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Amount:", nullptr));
+        label_Paymants_amount->setText(QCoreApplication::translate("MainWindow", "2121", nullptr));
+        label_19->setText(QCoreApplication::translate("MainWindow", "Date:", nullptr));
+        label_Paymants_date->setText(QCoreApplication::translate("MainWindow", "\320\264\320\260\321\202\320\260", nullptr));
+        label_26->setText(QCoreApplication::translate("MainWindow", "Description", nullptr));
+        pushButton_Payments_add->setText(QCoreApplication::translate("MainWindow", "Add payment ", nullptr));
+        tabWidget_Paymants->setTabText(tabWidget_Paymants->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
+        label_27->setText(QCoreApplication::translate("MainWindow", "Name:", nullptr));
+        label_29->setText(QCoreApplication::translate("MainWindow", "Amount:", nullptr));
+        label_28->setText(QCoreApplication::translate("MainWindow", "Description:", nullptr));
+        pushButton_Payments_pay->setText(QCoreApplication::translate("MainWindow", "Pay", nullptr));
+        tabWidget_Paymants->setTabText(tabWidget_Paymants->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         label_15->setText(QCoreApplication::translate("MainWindow", "Payments", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_payments), QCoreApplication::translate("MainWindow", "Payments", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "SING IN", nullptr));

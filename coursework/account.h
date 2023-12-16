@@ -1,7 +1,7 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 #include <QString>
-
+#include "payment.h"
 class Account
 {
        int id;
@@ -10,6 +10,7 @@ class Account
        double amount;
        double balance;
 public:
+       QVector<Payment*> payments;
     Account(); Account(int id, int userId, QString name, double amount, double balance);
 
     // Методи для отримання значень властивостей

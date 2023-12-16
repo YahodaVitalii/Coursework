@@ -10,17 +10,22 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget_user->tabBar()->hide();
     ui->tabWidget_user->setCurrentIndex(0);
     ui->tabWidget_Accounts->tabBar()->hide();
     ui->tabWidget_Accounts->setCurrentIndex(1);
+    ui->tabWidget_Paymants->tabBar()->hide();
+    ui->tabWidget_Paymants->setCurrentIndex(0);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+//User
 
 void MainWindow::on_pushButton_SingIn_SIngUp_clicked()
 {
@@ -36,7 +41,7 @@ void MainWindow::on_pushButton_SingUp_SIngIn_Up_clicked()
             ui->lineEdit_SingUp_password->text().isEmpty() &&
             ui->lineEdit_SingUp_name->text().isEmpty())
     {
-        QMessageBox::information(nullptr, "Пусте поле", "Введіть всі поля");
+        QMessageBox::information(nullptr, "Empty field", "Enter all fields");
     }
     else{
         User* user = new User(0,ui->lineEdit_SingUp_fullname->text(),
@@ -61,7 +66,7 @@ void MainWindow::on_pushButton_SingIn_SIngIn_clicked()
             ui->lineEdit_SingIn_password->text().isEmpty() &&
             ui->lineEdit_SingIn_name->text().isEmpty())
     {
-        QMessageBox::information(nullptr, "Пусте поле", "Введіть всі поля");
+        QMessageBox::information(nullptr, "Empty field", "Enter all fields");
     }
     else{
         bool userFound = false;
@@ -87,7 +92,7 @@ void MainWindow::on_pushButton_SingIn_SIngIn_clicked()
 
         if (!userFound) {
             // Виведення повідомлення про невірний логін чи пароль
-            QMessageBox::warning(this, "Помилка", "Невірний логін або пароль", QMessageBox::Ok);
+            QMessageBox::warning(this, "Error", "Invalid login or password", QMessageBox::Ok);
         }
 
     }
@@ -100,15 +105,13 @@ void MainWindow::on_pushButton_clicked()
 {
     ui->tabWidget_user->setCurrentIndex(0);
 }
-
+//Acounts
 
 void MainWindow::on_pushButton_Accounts_create_clicked()
 {
-    if (
-
-            ui->lineEdit_Account_name->text().isEmpty())
+    if ( ui->lineEdit_Account_name->text().isEmpty())
     {
-        QMessageBox::information(nullptr, "Пусте поле", "Введіть всі поля");
+        QMessageBox::information(nullptr, "Empty field", "Enter all fields");
     }
     else{
         Account* account = new Account(0,currentUser->getId(),ui->lineEdit_Account_name->text(),0,0);
@@ -131,17 +134,12 @@ void MainWindow::on_pushButton_Accounts_add_clicked()
     ui->tabWidget_Accounts->setCurrentIndex(0);
 }
 
-
-
-
-
-
-
 void MainWindow::on_pushButton_Recharging_clicked()
 {
     ui->tabWidget_Accounts->setCurrentIndex(1);
     currentAccount->setBalance(ui->lineEdit_Recharging->text().toDouble() + ui->label_Account_Balance->text().toDouble());
-   ui->label_Account_Balance->setText(QString::number( currentAccount->getBalance() ));
+    ui->label_Account_Balance->setText(QString::number( currentAccount->getBalance() ));
+  //QDebug<<
 
 }
 //Тут через те що ми використовуємо конструктор копіювання данні які ми змінюємо не записуються в оригінальний обєкт
@@ -158,11 +156,51 @@ void MainWindow::on_pushButton_Account_Chose_clicked()
 {
     for(int i =0; i < currentUser->accounts.size();i++){
         if( ui->comboBox_Account->currentText() == currentUser->accounts[i]->getName() ){
-             currentAccount =  new Account(*currentUser->accounts[i]);
+            currentAccount =  new Account(*currentUser->accounts[i]);
             ui->label_Account_Balance->setText(QString::number(currentUser->accounts[i]->getBalance()));
             ui->label_Account_Amount->setText(QString::number(currentUser->accounts[i]->getAmount()));
 
         }
+    }
+}
+//Paymants
+
+void MainWindow::on_pushButton_Payments_add_clicked()
+{
+    ui->tabWidget_Paymants->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_pushButton_Payments_pay_clicked()
+{
+    if (ui->lineEdit_Payments_name->text().isEmpty() ||
+            ui->lineEdit_Payments_amount->text().isEmpty()||
+            ui->textEdit_Payments_description->toPlainText().isEmpty())
+    {
+        QMessageBox::information(nullptr, "Empty field", "Enter all fields");
+    }
+    if (currentAccount->getBalance() < ui->lineEdit_Payments_amount->text().toDouble())
+    {
+        QMessageBox::information(nullptr, "Not enough funds", "Top up your account");
+    }
+    else{
+        Payment* payment = new  Payment(currentAccount->getId(),ui->lineEdit_Payments_name->text()
+        ,ui->lineEdit_Payments_amount->text().toDouble() ,QDate::currentDate(),ui->textEdit_Payments_description->toPlainText());
+
+
+        ui->label_Paymants_amount->setText(QString::number(payment->getAmount()));
+        ui->label_Paymants_date->setText(payment->getDate().toString("yyyy-MM-dd"));
+        ui->textBrowser->setText(payment->getDescription());
+
+        ui->comboBox_Payments->addItem(payment->getName());
+
+        currentPayment =  new Payment(*payment);
+        currentAccount->payments.push_back(payment);
+
+        currentAccount->setBalance( currentAccount->getBalance() - currentPayment->getAmount());
+        ui->label_Account_Balance->setText(QString::number( currentAccount->getBalance() ));
+
+        ui->tabWidget_Paymants->setCurrentIndex(0);
     }
 }
 

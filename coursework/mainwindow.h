@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDateTime>
 #include "user.h"
 
 QT_BEGIN_NAMESPACE
@@ -36,10 +37,15 @@ private slots:
 
     void on_pushButton_Account_Chose_clicked();
 
+    void on_pushButton_Payments_add_clicked();
+
+    void on_pushButton_Payments_pay_clicked();
+
 private:
     Ui::MainWindow *ui;
     User* currentUser = new User(1,"1","1","1","1",1);
     Account* currentAccount;
+    Payment* currentPayment;
     QVector<User*> users;
 };
 #endif // MAINWINDOW_H

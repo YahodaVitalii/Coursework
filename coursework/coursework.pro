@@ -12,11 +12,13 @@ SOURCES += \
     account.cpp \
     main.cpp \
     mainwindow.cpp \
+    payment.cpp \
     user.cpp
 
 HEADERS += \
     account.h \
     mainwindow.h \
+    payment.h \
     user.h
 
 FORMS += \
