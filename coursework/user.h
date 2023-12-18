@@ -22,6 +22,8 @@ public:
     QString getUsername() const;
     QString getPassword() const;
     int getAge() const;
+
+    QString toString() const;
 };
 
 #endif

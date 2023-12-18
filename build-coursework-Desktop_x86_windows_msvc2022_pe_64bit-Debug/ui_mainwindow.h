@@ -990,7 +990,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
         tabWidget_Accounts->setCurrentIndex(2);
         tabWidget_Paymants->setCurrentIndex(1);
         tabWidget_user->setCurrentIndex(2);

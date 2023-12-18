@@ -30,3 +30,16 @@ QString User::getPassword() const {
 int User::getAge() const {
     return age;
 }
+QString User::toString() const {
+    QString userString;
+    QTextStream stream(&userString);
+
+    stream << "ID: " << getId() << "\n";
+    stream << "Name: " << getName() << "\n";
+    stream << "Address: " << getAddress() << "\n";
+    stream << "Username: " << getUsername() << "\n";
+    stream << "Password: " << getPassword() << "\n";
+    stream << "Age: " << getAge();
+
+    return userString;
+}

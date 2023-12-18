@@ -3,7 +3,14 @@
 
 #include <QMainWindow>
 #include <QDateTime>
+#include <QSqlTableModel>
+#include <QSqlQuery>
 #include "user.h"
+#include "dbmanager.h"
+
+class QSqlTableModel;
+
+class DBManager;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,7 +21,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+   explicit  MainWindow(DBManager* dbManrage, QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -43,6 +50,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    DBManager* dbManager;
+    QSqlTableModel* model;
+
     User* currentUser = new User(1,"1","1","1","1",1);
     Account* currentAccount;
     Payment* currentPayment;

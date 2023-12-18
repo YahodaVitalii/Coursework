@@ -5,9 +5,9 @@
 
 
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(DBManager* dbManager,QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow), dbManager(dbManager)
 {
     ui->setupUi(this);
 
@@ -44,15 +44,17 @@ void MainWindow::on_pushButton_SingUp_SIngIn_Up_clicked()
         QMessageBox::information(nullptr, "Empty field", "Enter all fields");
     }
     else{
-        User* user = new User(0,ui->lineEdit_SingUp_fullname->text(),
+        User* user = new User(3,ui->lineEdit_SingUp_fullname->text(),
                               ui->lineEdit_SingUp_address->text(),
                               ui->lineEdit_SingUp_name->text(),
                               ui->lineEdit_SingUp_password->text(),
                               ui->lineEdit_SingUp_age->text().toInt());
         ui->tabWidget_user->setCurrentIndex(0);
         users.push_back(user);
+            // dbManager->connectToDataBase();
+        if (!dbManager->inserIntoTable(*user)) {
+                qDebug() << "Error inserting data into the database.";}
 
-        //Wdelete user;
     }
 
 }
@@ -124,6 +126,8 @@ void MainWindow::on_pushButton_Accounts_create_clicked()
         currentUser->accounts.push_back(account);
 
         ui->tabWidget_Accounts->setCurrentIndex(1);
+        if (!dbManager->inserIntoTable(*account)) {
+                qDebug() << "Error inserting data into the database.";}
     }
 
 }
@@ -201,6 +205,9 @@ void MainWindow::on_pushButton_Payments_pay_clicked()
         ui->label_Account_Balance->setText(QString::number( currentAccount->getBalance() ));
 
         ui->tabWidget_Paymants->setCurrentIndex(0);
+
+        if (!dbManager->inserIntoTable(*payment)) {
+                qDebug() << "Error inserting data into the database.";}
     }
 }
 
