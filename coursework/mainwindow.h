@@ -7,7 +7,7 @@
 #include <QSqlQuery>
 #include "user.h"
 #include "dbmanager.h"
-
+#include <QDebug>
 class QSqlTableModel;
 
 class DBManager;
@@ -22,6 +22,9 @@ class MainWindow : public QMainWindow
 
 public:
    explicit  MainWindow(DBManager* dbManrage, QWidget *parent = nullptr);
+    void changeUsername(QString name);
+    void changeBalance(QString balance);
+
     ~MainWindow();
 
 private slots:
@@ -48,14 +51,16 @@ private slots:
 
     void on_pushButton_Payments_pay_clicked();
 
+    void on_pushButton_Payments_ChosePaymant_clicked();
+
 private:
     Ui::MainWindow *ui;
     DBManager* dbManager;
     QSqlTableModel* model;
 
-    User* currentUser = new User(1,"1","1","1","1",1);
+    User* currentUser;
     Account* currentAccount;
     Payment* currentPayment;
-    QVector<User*> users;
+
 };
 #endif // MAINWINDOW_H

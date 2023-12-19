@@ -24,6 +24,9 @@ MainWindow::MainWindow(DBManager* dbManager,QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete currentUser;
+    delete currentAccount;
+    delete currentPayment;
 }
 //User
 
@@ -50,10 +53,9 @@ void MainWindow::on_pushButton_SingUp_SIngIn_Up_clicked()
                               ui->lineEdit_SingUp_password->text(),
                               ui->lineEdit_SingUp_age->text().toInt());
         ui->tabWidget_user->setCurrentIndex(0);
-        users.push_back(user);
-            // dbManager->connectToDataBase();
+
         if (!dbManager->inserIntoTable(*user)) {
-                qDebug() << "Error inserting data into the database.";}
+            qDebug() << "Error inserting data into the database.";}
 
     }
 
@@ -62,8 +64,8 @@ void MainWindow::on_pushButton_SingUp_SIngIn_Up_clicked()
 
 void MainWindow::on_pushButton_SingIn_SIngIn_clicked()
 {
-    User* user= new User(1,"1","1","1","1",1);
-    users.push_back(user);
+    User* user;
+
     if (
             ui->lineEdit_SingIn_password->text().isEmpty() &&
             ui->lineEdit_SingIn_name->text().isEmpty())
@@ -72,25 +74,30 @@ void MainWindow::on_pushButton_SingIn_SIngIn_clicked()
     }
     else{
         bool userFound = false;
-        for(int i = 0; i < users.size(); ++i) {
+        user = new User(dbManager->getUserById(dbManager->findUserIdByUsername(ui->lineEdit_SingIn_name->text())));
 
-            if(users[i]->getUsername() == ui->lineEdit_SingIn_name->text() && users[i]->getPassword() == ui->lineEdit_SingIn_password->text()) {
+        if(user->getPassword() == ui->lineEdit_SingIn_password->text()) {
 
-                ui->label_userLogin->setText(users[i]->getUsername());
-                ui->label_userLogin2->setText(users[i]->getUsername());
-                ui->label_userLogin3->setText(users[i]->getUsername());
-                ui->label_userLogin4->setText(users[i]->getUsername());
-                ui->label_userLogin5->setText(users[i]->getUsername());
-                ui->label_userName->setText(users[i]->getName());
-                ui->label_userAddress->setText(users[i]->getAddress());
-                ui->label_userAge->setText(QString::number(users[i]->getAge()));
-                ui->tabWidget_user->setCurrentIndex(2);
+            ui->label_userLogin->setText(user->getUsername());
+            // ui->label_userData_main_login->setText(user->getUsername());
+            ui->label_userName->setText(user->getName());
+            ui->label_userAddress->setText(user->getAddress());
+            ui->label_userAge->setText(QString::number(user->getAge()));
+            ui->tabWidget_user->setCurrentIndex(2);
+            MainWindow::changeUsername(user->getUsername());
+            currentUser = new User(*user);
 
-                currentUser = new User(*users[i]);
-                userFound = true;
-                break;
+
+            ui->comboBox_Account->clear();
+
+            QVector<QString> accountNames = dbManager->getAllAccountNamesForCurrentUser(currentUser->getId());
+            for (const QString& name : accountNames) {
+                ui->comboBox_Account->addItem(name);
             }
+
+            userFound = true;
         }
+
 
         if (!userFound) {
             // Виведення повідомлення про невірний логін чи пароль
@@ -98,10 +105,8 @@ void MainWindow::on_pushButton_SingIn_SIngIn_clicked()
         }
 
     }
-
+    delete user;
 }
-
-
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -116,18 +121,17 @@ void MainWindow::on_pushButton_Accounts_create_clicked()
         QMessageBox::information(nullptr, "Empty field", "Enter all fields");
     }
     else{
-        Account* account = new Account(0,currentUser->getId(),ui->lineEdit_Account_name->text(),0,0);
-        ui->label_Account_Balance->setText(QString::number(account->getBalance()));
-        ui->label_Account_Amount->setText(QString::number(account->getAmount()));
+        Account* account = new Account(1,currentUser->getId(),ui->lineEdit_Account_name->text(),0,0);
 
         ui->comboBox_Account->addItem(account->getName());
 
-        currentAccount =  new Account(*account);
-        currentUser->accounts.push_back(account);
+        if (!dbManager->inserIntoTable(*account)) {
+            qDebug() << "Error inserting data into the database.";}
+
+
 
         ui->tabWidget_Accounts->setCurrentIndex(1);
-        if (!dbManager->inserIntoTable(*account)) {
-                qDebug() << "Error inserting data into the database.";}
+
     }
 
 }
@@ -141,10 +145,12 @@ void MainWindow::on_pushButton_Accounts_add_clicked()
 void MainWindow::on_pushButton_Recharging_clicked()
 {
     ui->tabWidget_Accounts->setCurrentIndex(1);
-    currentAccount->setBalance(ui->lineEdit_Recharging->text().toDouble() + ui->label_Account_Balance->text().toDouble());
+    currentAccount->setBalance(currentAccount->getBalance() + ui->lineEdit_Recharging->text().toDouble());
     ui->label_Account_Balance->setText(QString::number( currentAccount->getBalance() ));
-  //QDebug<<
 
+    if( !dbManager->updateAccountBalance(currentAccount->getId(),  currentAccount->getBalance())){
+        qDebug() << "Error updating data into the database.";}
+    MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
 }
 //Тут через те що ми використовуємо конструктор копіювання данні які ми змінюємо не записуються в оригінальний обєкт
 
@@ -158,14 +164,18 @@ void MainWindow::on_pushButton_Accounts_Recharge_clicked()
 
 void MainWindow::on_pushButton_Account_Chose_clicked()
 {
-    for(int i =0; i < currentUser->accounts.size();i++){
-        if( ui->comboBox_Account->currentText() == currentUser->accounts[i]->getName() ){
-            currentAccount =  new Account(*currentUser->accounts[i]);
-            ui->label_Account_Balance->setText(QString::number(currentUser->accounts[i]->getBalance()));
-            ui->label_Account_Amount->setText(QString::number(currentUser->accounts[i]->getAmount()));
+    currentAccount =  new Account(dbManager->getAccountByName(ui->comboBox_Account->currentText()));
 
-        }
+    ui->label_Account_Balance->setText(QString::number(currentAccount->getBalance()));
+    ui->label_Account_Amount->setText(QString::number(currentAccount->getAmount()));
+
+    ui->comboBox_Payments->clear();
+
+    QVector<QString> paymentsNames = dbManager->getAllPaymentNamesForCurrentUser(currentAccount->getId());
+    for (const QString& name : paymentsNames) {
+        ui->comboBox_Payments->addItem(name);
     }
+    MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
 }
 //Paymants
 
@@ -188,26 +198,56 @@ void MainWindow::on_pushButton_Payments_pay_clicked()
         QMessageBox::information(nullptr, "Not enough funds", "Top up your account");
     }
     else{
-        Payment* payment = new  Payment(currentAccount->getId(),ui->lineEdit_Payments_name->text()
-        ,ui->lineEdit_Payments_amount->text().toDouble() ,QDate::currentDate(),ui->textEdit_Payments_description->toPlainText());
+        Payment* payment = new  Payment(0,currentAccount->getId(),ui->lineEdit_Payments_name->text()
+                                        ,ui->lineEdit_Payments_amount->text().toDouble() ,QDate::currentDate(),ui->textEdit_Payments_description->toPlainText());
 
+        if (!dbManager->inserIntoTable(*payment)) {
+            qDebug() << "Error inserting data into the database.";}
 
-        ui->label_Paymants_amount->setText(QString::number(payment->getAmount()));
-        ui->label_Paymants_date->setText(payment->getDate().toString("yyyy-MM-dd"));
-        ui->textBrowser->setText(payment->getDescription());
+        currentPayment =  new Payment( *dbManager->getLastPaymentForAccount(currentAccount->getId()));
 
         ui->comboBox_Payments->addItem(payment->getName());
 
-        currentPayment =  new Payment(*payment);
-        currentAccount->payments.push_back(payment);
+
+        qDebug()<< currentAccount->getBalance();
 
         currentAccount->setBalance( currentAccount->getBalance() - currentPayment->getAmount());
+        qDebug()<< currentAccount->getBalance();
+
+        currentAccount->setAmount( currentAccount->getAmount() + currentPayment->getAmount());
+
+        if(!dbManager->updateAccountBalance(currentAccount->getId(),  currentAccount->getBalance())){
+            qDebug() << "Error updating data into the database.";}
+
+        if(!dbManager->updateAccountAmount(currentAccount->getId(),  currentAccount->getAmount())){
+            qDebug() << "Error updating data into the database.";}
+
         ui->label_Account_Balance->setText(QString::number( currentAccount->getBalance() ));
+        ui->label_Account_Amount->setText(QString::number( currentAccount->getAmount() ));
 
         ui->tabWidget_Paymants->setCurrentIndex(0);
+         MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
 
-        if (!dbManager->inserIntoTable(*payment)) {
-                qDebug() << "Error inserting data into the database.";}
     }
 }
 
+
+void MainWindow::on_pushButton_Payments_ChosePaymant_clicked()
+{
+    currentPayment =  new Payment(dbManager->getPaymentByName(ui->comboBox_Payments->currentText()));
+
+    ui->label_Paymants_amount->setText(QString::number(currentPayment->getAmount()));
+    ui->label_Paymants_date->setText(currentPayment->getDate().toString("yyyy-MM-dd"));
+    ui->textBrowser->setText(currentPayment->getDescription());
+
+}
+void  MainWindow::changeUsername(QString name){
+    ui->label_userData_main_login->setText(name);
+    ui->label_userData_account_login->setText(name);
+    ui->label_userData_payment_login->setText(name);
+}
+void  MainWindow::changeBalance(QString balance){
+    ui->label_userData_main_balance->setText(balance);
+    ui->label_userData_account_balance->setText(balance);
+    ui->label_userData_paiment_balance->setText(balance);
+}

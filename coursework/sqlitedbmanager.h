@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QDate>
 #include <QDebug>
+#include <QVector>
 
 
 #define DATABASE_HOST_NAME   "ExampleDataBase"
@@ -32,6 +33,7 @@
 
 // Константи для класу Payment
 #define TABLE_PAYMENT           "Payments"
+#define TABLE_PAYMENT_ID         "id"
 #define TABLE_PAYMENT_ACCOUNT_ID "account_id"
 #define TABLE_PAYMENT_NAME      "name"
 #define TABLE_PAYMENT_AMOUNT    "amount"
@@ -54,7 +56,17 @@ public:
     bool inserIntoTable(const User& user) override;
     bool inserIntoTable(const Account& user) override;
     bool inserIntoTable(const Payment& user) override;
-
+    bool updateAccountBalance(int accountId, double newBalance) override;
+    bool updateAccountAmount(int accountId, double newAmount) override;
+    Payment getPaymentById(int paymentId) override;
+    Account getAccountById(int accountId) override;
+    User getUserById(int userId) override;
+    int findUserIdByUsername(const QString &usernameToFind) override;
+    QVector<QString> getAllAccountNamesForCurrentUser(int currentUserId) override;
+    QVector<QString> getAllPaymentNamesForCurrentUser(int currentUserId) override;
+    Account getAccountByName(const QString &accountName) override;
+    Payment getPaymentByName(const QString &paymentName) override;
+    Payment* getLastPaymentForAccount(int currentAccountId) override;
 private:
 
     QSqlDatabase db;

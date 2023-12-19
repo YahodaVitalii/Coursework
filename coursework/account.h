@@ -11,7 +11,8 @@ class Account
        double balance;
 public:
        QVector<Payment*> payments;
-    Account(); Account(int id, int userId, QString name, double amount, double balance);
+    Account(){}
+    Account(int id, int userId, QString name, double amount, double balance);
 
     // Методи для отримання значень властивостей
     int getId() const;
@@ -21,8 +22,12 @@ public:
     QString getName() const;
 
     // Методи для зміни значень властивостей
-    void setAmount(double newAmount);
-    void setBalance(double newBalance);
+
+    void setId(int newId);
+     void setUserId(int newUserId);
+     void setAmount(double newAmount);
+     void setBalance(double newBalance);
+     void setName(const QString &newName);
 };
 
 #endif // ACCOUNT_H

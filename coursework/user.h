@@ -13,7 +13,9 @@ class User
     int age;
 
 public:
-    QVector<Account*> accounts;
+    User(){
+
+    }
     User(int id, QString name, QString address, QString username, QString password, int age);
     User(const User &other);
      int getId() const;
@@ -22,6 +24,13 @@ public:
     QString getUsername() const;
     QString getPassword() const;
     int getAge() const;
+
+    void setId(int newId);
+        void setName(const QString &newName);
+        void setAddress(const QString &newAddress);
+        void setUsername(const QString &newUsername);
+        void setPassword(const QString &newPassword);
+        void setAge(int newAge);
 
     QString toString() const;
 };

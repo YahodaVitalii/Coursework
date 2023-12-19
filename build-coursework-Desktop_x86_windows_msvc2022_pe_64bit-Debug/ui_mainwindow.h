@@ -32,19 +32,28 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QHBoxLayout *horizontalLayout_4;
+    QVBoxLayout *verticalLayout_34;
     QTabWidget *tabWidget;
     QWidget *tab_main;
-    QWidget *horizontalLayoutWidget;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_31;
     QHBoxLayout *horizontalLayout;
     QLabel *label_username;
-    QLabel *label_userLogin4;
+    QLabel *label_userData_main_login;
+    QHBoxLayout *horizontalLayout_26;
+    QLabel *label_23;
+    QLabel *label_userData_main_balance;
     QWidget *tab_accounts;
     QVBoxLayout *verticalLayout_9;
+    QVBoxLayout *verticalLayout_33;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QLabel *label_username_2;
-    QLabel *label_userLogin3;
+    QLabel *label_userData_account_login;
+    QHBoxLayout *horizontalLayout_28;
+    QSpacerItem *horizontalSpacer_8;
+    QLabel *label_33;
+    QLabel *label_userData_account_balance;
     QHBoxLayout *horizontalLayout_8;
     QTabWidget *tabWidget_Accounts;
     QWidget *tab_2;
@@ -91,10 +100,15 @@ public:
     QTableView *tableView_accounts;
     QWidget *tab_payments;
     QVBoxLayout *verticalLayout_19;
-    QHBoxLayout *horizontalLayout_3;
+    QVBoxLayout *verticalLayout_32;
+    QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_3;
-    QLabel *label_username_3;
-    QLabel *label_userLogin2;
+    QLabel *label_username_5;
+    QLabel *label_userData_payment_login;
+    QHBoxLayout *horizontalLayout_27;
+    QSpacerItem *horizontalSpacer_6;
+    QLabel *label_31;
+    QLabel *label_userData_paiment_balance;
     QHBoxLayout *horizontalLayout_9;
     QTabWidget *tabWidget_Paymants;
     QWidget *tab_3;
@@ -198,7 +212,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(820, 460);
+        MainWindow->resize(870, 508);
         MainWindow->setMinimumSize(QSize(820, 460));
         MainWindow->setMaximumSize(QSize(1920, 1080));
         MainWindow->setFocusPolicy(Qt::NoFocus);
@@ -207,11 +221,8 @@ public:
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        horizontalLayout_4 = new QHBoxLayout(centralwidget);
-        horizontalLayout_4->setSpacing(0);
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        horizontalLayout_4->setSizeConstraint(QLayout::SetDefaultConstraint);
-        horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_34 = new QVBoxLayout(centralwidget);
+        verticalLayout_34->setObjectName("verticalLayout_34");
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -226,13 +237,15 @@ public:
         tabWidget->setElideMode(Qt::ElideMiddle);
         tab_main = new QWidget();
         tab_main->setObjectName("tab_main");
-        horizontalLayoutWidget = new QWidget(tab_main);
-        horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(660, 0, 151, 41));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        widget = new QWidget(tab_main);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(660, 0, 141, 61));
+        verticalLayout_31 = new QVBoxLayout(widget);
+        verticalLayout_31->setObjectName("verticalLayout_31");
+        verticalLayout_31->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label_username = new QLabel(horizontalLayoutWidget);
+        label_username = new QLabel(widget);
         label_username->setObjectName("label_username");
         label_username->setMinimumSize(QSize(30, 30));
         label_username->setMaximumSize(QSize(40, 40));
@@ -241,44 +254,93 @@ public:
 
         horizontalLayout->addWidget(label_username);
 
-        label_userLogin4 = new QLabel(horizontalLayoutWidget);
-        label_userLogin4->setObjectName("label_userLogin4");
+        label_userData_main_login = new QLabel(widget);
+        label_userData_main_login->setObjectName("label_userData_main_login");
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label_userLogin4->sizePolicy().hasHeightForWidth());
-        label_userLogin4->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(label_userData_main_login->sizePolicy().hasHeightForWidth());
+        label_userData_main_login->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addWidget(label_userLogin4);
+        horizontalLayout->addWidget(label_userData_main_login);
+
+
+        verticalLayout_31->addLayout(horizontalLayout);
+
+        horizontalLayout_26 = new QHBoxLayout();
+        horizontalLayout_26->setObjectName("horizontalLayout_26");
+        label_23 = new QLabel(widget);
+        label_23->setObjectName("label_23");
+        QFont font;
+        font.setPointSize(8);
+        label_23->setFont(font);
+
+        horizontalLayout_26->addWidget(label_23);
+
+        label_userData_main_balance = new QLabel(widget);
+        label_userData_main_balance->setObjectName("label_userData_main_balance");
+        label_userData_main_balance->setFont(font);
+
+        horizontalLayout_26->addWidget(label_userData_main_balance);
+
+
+        verticalLayout_31->addLayout(horizontalLayout_26);
 
         tabWidget->addTab(tab_main, QString());
         tab_accounts = new QWidget();
         tab_accounts->setObjectName("tab_accounts");
         verticalLayout_9 = new QVBoxLayout(tab_accounts);
         verticalLayout_9->setObjectName("verticalLayout_9");
+        verticalLayout_33 = new QVBoxLayout();
+        verticalLayout_33->setObjectName("verticalLayout_33");
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
         label_username_2 = new QLabel(tab_accounts);
         label_username_2->setObjectName("label_username_2");
-        label_username_2->setMaximumSize(QSize(35, 35));
+        label_username_2->setMinimumSize(QSize(30, 30));
+        label_username_2->setMaximumSize(QSize(40, 40));
         label_username_2->setPixmap(QPixmap(QString::fromUtf8("../Image/user.png")));
         label_username_2->setScaledContents(true);
 
         horizontalLayout_2->addWidget(label_username_2);
 
-        label_userLogin3 = new QLabel(tab_accounts);
-        label_userLogin3->setObjectName("label_userLogin3");
-        sizePolicy1.setHeightForWidth(label_userLogin3->sizePolicy().hasHeightForWidth());
-        label_userLogin3->setSizePolicy(sizePolicy1);
+        label_userData_account_login = new QLabel(tab_accounts);
+        label_userData_account_login->setObjectName("label_userData_account_login");
+        sizePolicy1.setHeightForWidth(label_userData_account_login->sizePolicy().hasHeightForWidth());
+        label_userData_account_login->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_2->addWidget(label_userLogin3);
+        horizontalLayout_2->addWidget(label_userData_account_login);
 
 
-        verticalLayout_9->addLayout(horizontalLayout_2);
+        verticalLayout_33->addLayout(horizontalLayout_2);
+
+        horizontalLayout_28 = new QHBoxLayout();
+        horizontalLayout_28->setObjectName("horizontalLayout_28");
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_28->addItem(horizontalSpacer_8);
+
+        label_33 = new QLabel(tab_accounts);
+        label_33->setObjectName("label_33");
+        label_33->setFont(font);
+
+        horizontalLayout_28->addWidget(label_33);
+
+        label_userData_account_balance = new QLabel(tab_accounts);
+        label_userData_account_balance->setObjectName("label_userData_account_balance");
+        label_userData_account_balance->setFont(font);
+
+        horizontalLayout_28->addWidget(label_userData_account_balance);
+
+
+        verticalLayout_33->addLayout(horizontalLayout_28);
+
+
+        verticalLayout_9->addLayout(verticalLayout_33);
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName("horizontalLayout_8");
@@ -491,29 +553,56 @@ public:
         tab_payments->setObjectName("tab_payments");
         verticalLayout_19 = new QVBoxLayout(tab_payments);
         verticalLayout_19->setObjectName("verticalLayout_19");
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        verticalLayout_32 = new QVBoxLayout();
+        verticalLayout_32->setObjectName("verticalLayout_32");
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName("horizontalLayout_4");
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer_3);
+        horizontalLayout_4->addItem(horizontalSpacer_3);
 
-        label_username_3 = new QLabel(tab_payments);
-        label_username_3->setObjectName("label_username_3");
-        label_username_3->setMaximumSize(QSize(35, 35));
-        label_username_3->setPixmap(QPixmap(QString::fromUtf8("../Image/user.png")));
-        label_username_3->setScaledContents(true);
+        label_username_5 = new QLabel(tab_payments);
+        label_username_5->setObjectName("label_username_5");
+        label_username_5->setMinimumSize(QSize(30, 30));
+        label_username_5->setMaximumSize(QSize(40, 40));
+        label_username_5->setPixmap(QPixmap(QString::fromUtf8("../Image/user.png")));
+        label_username_5->setScaledContents(true);
 
-        horizontalLayout_3->addWidget(label_username_3);
+        horizontalLayout_4->addWidget(label_username_5);
 
-        label_userLogin2 = new QLabel(tab_payments);
-        label_userLogin2->setObjectName("label_userLogin2");
-        sizePolicy1.setHeightForWidth(label_userLogin2->sizePolicy().hasHeightForWidth());
-        label_userLogin2->setSizePolicy(sizePolicy1);
+        label_userData_payment_login = new QLabel(tab_payments);
+        label_userData_payment_login->setObjectName("label_userData_payment_login");
+        sizePolicy1.setHeightForWidth(label_userData_payment_login->sizePolicy().hasHeightForWidth());
+        label_userData_payment_login->setSizePolicy(sizePolicy1);
 
-        horizontalLayout_3->addWidget(label_userLogin2);
+        horizontalLayout_4->addWidget(label_userData_payment_login);
 
 
-        verticalLayout_19->addLayout(horizontalLayout_3);
+        verticalLayout_32->addLayout(horizontalLayout_4);
+
+        horizontalLayout_27 = new QHBoxLayout();
+        horizontalLayout_27->setObjectName("horizontalLayout_27");
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_27->addItem(horizontalSpacer_6);
+
+        label_31 = new QLabel(tab_payments);
+        label_31->setObjectName("label_31");
+        label_31->setFont(font);
+
+        horizontalLayout_27->addWidget(label_31);
+
+        label_userData_paiment_balance = new QLabel(tab_payments);
+        label_userData_paiment_balance->setObjectName("label_userData_paiment_balance");
+        label_userData_paiment_balance->setFont(font);
+
+        horizontalLayout_27->addWidget(label_userData_paiment_balance);
+
+
+        verticalLayout_32->addLayout(horizontalLayout_27);
+
+
+        verticalLayout_19->addLayout(verticalLayout_32);
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName("horizontalLayout_9");
@@ -691,9 +780,9 @@ public:
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
         label_6 = new QLabel(layoutWidget);
         label_6->setObjectName("label_6");
-        QFont font;
-        font.setPointSize(18);
-        label_6->setFont(font);
+        QFont font1;
+        font1.setPointSize(18);
+        label_6->setFont(font1);
         label_6->setAlignment(Qt::AlignCenter);
 
         verticalLayout_6->addWidget(label_6);
@@ -775,7 +864,7 @@ public:
         verticalLayout_18->setObjectName("verticalLayout_18");
         label_10 = new QLabel(user_tab_singUP);
         label_10->setObjectName("label_10");
-        label_10->setFont(font);
+        label_10->setFont(font1);
         label_10->setAlignment(Qt::AlignCenter);
 
         verticalLayout_18->addWidget(label_10);
@@ -984,14 +1073,14 @@ public:
 
         tabWidget->addTab(tab_user, QString());
 
-        horizontalLayout_4->addWidget(tabWidget);
+        verticalLayout_34->addWidget(tabWidget);
 
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
-        tabWidget_Accounts->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(3);
+        tabWidget_Accounts->setCurrentIndex(0);
         tabWidget_Paymants->setCurrentIndex(1);
         tabWidget_user->setCurrentIndex(2);
 
@@ -1003,10 +1092,14 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Courswork", nullptr));
         label_username->setText(QString());
-        label_userLogin4->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
+        label_userData_main_login->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
+        label_23->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
+        label_userData_main_balance->setText(QCoreApplication::translate("MainWindow", "0.0", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_main), QCoreApplication::translate("MainWindow", "Main", nullptr));
         label_username_2->setText(QString());
-        label_userLogin3->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
+        label_userData_account_login->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
+        label_33->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
+        label_userData_account_balance->setText(QCoreApplication::translate("MainWindow", "0.0", nullptr));
         label_username_4->setText(QString());
         label_userLogin5->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Account name:", nullptr));
@@ -1015,10 +1108,10 @@ public:
         label_12->setText(QCoreApplication::translate("MainWindow", "Account:", nullptr));
         pushButton_Account_Chose->setText(QCoreApplication::translate("MainWindow", "Chose", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
-        label_Account_Balance->setText(QCoreApplication::translate("MainWindow", "10", nullptr));
+        label_Account_Balance->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         pushButton_Accounts_Recharge->setText(QCoreApplication::translate("MainWindow", "Recharge account", nullptr));
         label_18->setText(QCoreApplication::translate("MainWindow", "Amount", nullptr));
-        label_Account_Amount->setText(QCoreApplication::translate("MainWindow", "12", nullptr));
+        label_Account_Amount->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         pushButton_Accounts_add->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         pushButton_Accounts_delete->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
         tabWidget_Accounts->setTabText(tabWidget_Accounts->indexOf(tab), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
@@ -1028,14 +1121,16 @@ public:
         tabWidget_Accounts->setTabText(tabWidget_Accounts->indexOf(tab_5), QCoreApplication::translate("MainWindow", "Page", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "Accounts", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_accounts), QCoreApplication::translate("MainWindow", "Accounts", nullptr));
-        label_username_3->setText(QString());
-        label_userLogin2->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
+        label_username_5->setText(QString());
+        label_userData_payment_login->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
+        label_31->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
+        label_userData_paiment_balance->setText(QCoreApplication::translate("MainWindow", "0.0", nullptr));
         label_13->setText(QCoreApplication::translate("MainWindow", "Info about Payment:", nullptr));
         pushButton_Payments_ChosePaymant->setText(QCoreApplication::translate("MainWindow", "Chose", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Amount:", nullptr));
-        label_Paymants_amount->setText(QCoreApplication::translate("MainWindow", "2121", nullptr));
+        label_Paymants_amount->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_19->setText(QCoreApplication::translate("MainWindow", "Date:", nullptr));
-        label_Paymants_date->setText(QCoreApplication::translate("MainWindow", "\320\264\320\260\321\202\320\260", nullptr));
+        label_Paymants_date->setText(QCoreApplication::translate("MainWindow", "00.00.0000", nullptr));
         label_26->setText(QCoreApplication::translate("MainWindow", "Description", nullptr));
         pushButton_Payments_add->setText(QCoreApplication::translate("MainWindow", "Add payment ", nullptr));
         tabWidget_Paymants->setTabText(tabWidget_Paymants->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));

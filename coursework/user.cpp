@@ -30,6 +30,29 @@ QString User::getPassword() const {
 int User::getAge() const {
     return age;
 }
+void User::setId(int newId) {
+    id = newId;
+}
+
+void User::setName(const QString &newName) {
+    name = newName;
+}
+
+void User::setAddress(const QString &newAddress) {
+    address = newAddress;
+}
+
+void User::setUsername(const QString &newUsername) {
+    username = newUsername;
+}
+
+void User::setPassword(const QString &newPassword) {
+    password = newPassword;
+}
+
+void User::setAge(int newAge) {
+    age = newAge;
+}
 QString User::toString() const {
     QString userString;
     QTextStream stream(&userString);

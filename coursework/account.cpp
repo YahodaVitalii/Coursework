@@ -27,3 +27,12 @@ void Account::setAmount(double newAmount) {
 void Account::setBalance(double newBalance) {
     balance = newBalance;
 }
+void Account::setId(int newId) {
+    id = newId;
+}
+void Account::setUserId(int newUserId) {
+    userId = newUserId;
+}
+void Account::setName(const QString &newName) {
+    name = newName;
+}
