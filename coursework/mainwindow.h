@@ -7,6 +7,7 @@
 #include <QSqlQuery>
 #include "user.h"
 #include "dbmanager.h"
+#include "sqlitedbmanager.h"
 #include <QDebug>
 class QSqlTableModel;
 
@@ -57,6 +58,7 @@ private:
     Ui::MainWindow *ui;
     DBManager* dbManager;
     QSqlTableModel* model;
+
 
     User* currentUser;
     Account* currentAccount;

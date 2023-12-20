@@ -67,6 +67,7 @@ public:
     Account getAccountByName(const QString &accountName) override;
     Payment getPaymentByName(const QString &paymentName) override;
     Payment* getLastPaymentForAccount(int currentAccountId) override;
+    Account* getLastAccountForUser(int currentUserId) override;
 private:
 
     QSqlDatabase db;

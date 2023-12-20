@@ -13,14 +13,12 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableView>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
@@ -34,15 +32,6 @@ public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_34;
     QTabWidget *tabWidget;
-    QWidget *tab_main;
-    QWidget *widget;
-    QVBoxLayout *verticalLayout_31;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label_username;
-    QLabel *label_userData_main_login;
-    QHBoxLayout *horizontalLayout_26;
-    QLabel *label_23;
-    QLabel *label_userData_main_balance;
     QWidget *tab_accounts;
     QVBoxLayout *verticalLayout_9;
     QVBoxLayout *verticalLayout_33;
@@ -55,6 +44,7 @@ public:
     QLabel *label_33;
     QLabel *label_userData_account_balance;
     QHBoxLayout *horizontalLayout_8;
+    QSpacerItem *horizontalSpacer_7;
     QTabWidget *tabWidget_Accounts;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_14;
@@ -65,6 +55,7 @@ public:
     QHBoxLayout *horizontalLayout_13;
     QLabel *label;
     QLineEdit *lineEdit_Account_name;
+    QSpacerItem *horizontalSpacer_15;
     QPushButton *pushButton_Accounts_create;
     QWidget *tab;
     QVBoxLayout *verticalLayout_26;
@@ -92,12 +83,11 @@ public:
     QHBoxLayout *horizontalLayout_22;
     QLabel *label_25;
     QLineEdit *lineEdit_Recharging;
+    QSpacerItem *horizontalSpacer_14;
     QSpacerItem *verticalSpacer_8;
     QPushButton *pushButton_Recharging;
     QSpacerItem *verticalSpacer_6;
-    QVBoxLayout *verticalLayout_7;
-    QLabel *label_11;
-    QTableView *tableView_accounts;
+    QSpacerItem *horizontalSpacer_9;
     QWidget *tab_payments;
     QVBoxLayout *verticalLayout_19;
     QVBoxLayout *verticalLayout_32;
@@ -110,6 +100,7 @@ public:
     QLabel *label_31;
     QLabel *label_userData_paiment_balance;
     QHBoxLayout *horizontalLayout_9;
+    QSpacerItem *horizontalSpacer_11;
     QTabWidget *tabWidget_Paymants;
     QWidget *tab_3;
     QVBoxLayout *verticalLayout_28;
@@ -132,16 +123,16 @@ public:
     QHBoxLayout *horizontalLayout_24;
     QLabel *label_27;
     QLineEdit *lineEdit_Payments_name;
+    QSpacerItem *horizontalSpacer_12;
     QHBoxLayout *horizontalLayout_25;
     QLabel *label_29;
     QLineEdit *lineEdit_Payments_amount;
+    QSpacerItem *horizontalSpacer_13;
     QVBoxLayout *verticalLayout_29;
     QLabel *label_28;
     QTextEdit *textEdit_Payments_description;
     QPushButton *pushButton_Payments_pay;
-    QVBoxLayout *verticalLayout_10;
-    QLabel *label_15;
-    QTableView *tableView_payments;
+    QSpacerItem *horizontalSpacer_10;
     QWidget *tab_user;
     QVBoxLayout *verticalLayout_20;
     QVBoxLayout *verticalLayout_21;
@@ -180,15 +171,18 @@ public:
     QLineEdit *lineEdit_SingUp_age;
     QVBoxLayout *verticalLayout_17;
     QVBoxLayout *verticalLayout_11;
+    QSpacerItem *verticalSpacer_11;
     QLabel *label_14;
     QLineEdit *lineEdit_SingUp_name;
     QVBoxLayout *verticalLayout_8;
+    QSpacerItem *verticalSpacer_10;
     QLabel *label_7;
     QLineEdit *lineEdit_SingUp_password;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton_SingUp_SIngIn_Up;
     QWidget *user_tab_displayedUser;
     QHBoxLayout *horizontalLayout_6;
+    QSpacerItem *horizontalSpacer_16;
     QVBoxLayout *verticalLayout_23;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_22;
@@ -202,11 +196,10 @@ public:
     QHBoxLayout *horizontalLayout_11;
     QLabel *label_21;
     QLabel *label_userAge;
-    QSpacerItem *verticalSpacer_5;
-    QVBoxLayout *verticalLayout_24;
-    QSpacerItem *verticalSpacer_4;
+    QSpacerItem *verticalSpacer_12;
     QPushButton *pushButton;
-    QSpacerItem *verticalSpacer_3;
+    QSpacerItem *verticalSpacer_5;
+    QSpacerItem *horizontalSpacer_17;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -235,58 +228,6 @@ public:
         tabWidget->setAutoFillBackground(true);
         tabWidget->setTabShape(QTabWidget::Rounded);
         tabWidget->setElideMode(Qt::ElideMiddle);
-        tab_main = new QWidget();
-        tab_main->setObjectName("tab_main");
-        widget = new QWidget(tab_main);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(660, 0, 141, 61));
-        verticalLayout_31 = new QVBoxLayout(widget);
-        verticalLayout_31->setObjectName("verticalLayout_31");
-        verticalLayout_31->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
-        label_username = new QLabel(widget);
-        label_username->setObjectName("label_username");
-        label_username->setMinimumSize(QSize(30, 30));
-        label_username->setMaximumSize(QSize(40, 40));
-        label_username->setPixmap(QPixmap(QString::fromUtf8("../Image/user.png")));
-        label_username->setScaledContents(true);
-
-        horizontalLayout->addWidget(label_username);
-
-        label_userData_main_login = new QLabel(widget);
-        label_userData_main_login->setObjectName("label_userData_main_login");
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label_userData_main_login->sizePolicy().hasHeightForWidth());
-        label_userData_main_login->setSizePolicy(sizePolicy1);
-
-        horizontalLayout->addWidget(label_userData_main_login);
-
-
-        verticalLayout_31->addLayout(horizontalLayout);
-
-        horizontalLayout_26 = new QHBoxLayout();
-        horizontalLayout_26->setObjectName("horizontalLayout_26");
-        label_23 = new QLabel(widget);
-        label_23->setObjectName("label_23");
-        QFont font;
-        font.setPointSize(8);
-        label_23->setFont(font);
-
-        horizontalLayout_26->addWidget(label_23);
-
-        label_userData_main_balance = new QLabel(widget);
-        label_userData_main_balance->setObjectName("label_userData_main_balance");
-        label_userData_main_balance->setFont(font);
-
-        horizontalLayout_26->addWidget(label_userData_main_balance);
-
-
-        verticalLayout_31->addLayout(horizontalLayout_26);
-
-        tabWidget->addTab(tab_main, QString());
         tab_accounts = new QWidget();
         tab_accounts->setObjectName("tab_accounts");
         verticalLayout_9 = new QVBoxLayout(tab_accounts);
@@ -310,6 +251,9 @@ public:
 
         label_userData_account_login = new QLabel(tab_accounts);
         label_userData_account_login->setObjectName("label_userData_account_login");
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(label_userData_account_login->sizePolicy().hasHeightForWidth());
         label_userData_account_login->setSizePolicy(sizePolicy1);
 
@@ -326,6 +270,8 @@ public:
 
         label_33 = new QLabel(tab_accounts);
         label_33->setObjectName("label_33");
+        QFont font;
+        font.setPointSize(8);
         label_33->setFont(font);
 
         horizontalLayout_28->addWidget(label_33);
@@ -344,8 +290,13 @@ public:
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName("horizontalLayout_8");
+        horizontalSpacer_7 = new QSpacerItem(150, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_7);
+
         tabWidget_Accounts = new QTabWidget(tab_accounts);
         tabWidget_Accounts->setObjectName("tabWidget_Accounts");
+        tabWidget_Accounts->setTabletTracking(false);
         tab_2 = new QWidget();
         tab_2->setObjectName("tab_2");
         verticalLayout_14 = new QVBoxLayout(tab_2);
@@ -385,6 +336,10 @@ public:
         lineEdit_Account_name->setObjectName("lineEdit_Account_name");
 
         horizontalLayout_13->addWidget(lineEdit_Account_name);
+
+        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_13->addItem(horizontalSpacer_15);
 
 
         verticalLayout_14->addLayout(horizontalLayout_13);
@@ -509,6 +464,10 @@ public:
 
         horizontalLayout_22->addWidget(lineEdit_Recharging);
 
+        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_22->addItem(horizontalSpacer_14);
+
 
         verticalLayout_15->addLayout(horizontalLayout_22);
 
@@ -529,21 +488,9 @@ public:
 
         horizontalLayout_8->addWidget(tabWidget_Accounts);
 
-        verticalLayout_7 = new QVBoxLayout();
-        verticalLayout_7->setObjectName("verticalLayout_7");
-        label_11 = new QLabel(tab_accounts);
-        label_11->setObjectName("label_11");
-        label_11->setAlignment(Qt::AlignCenter);
+        horizontalSpacer_9 = new QSpacerItem(150, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        verticalLayout_7->addWidget(label_11);
-
-        tableView_accounts = new QTableView(tab_accounts);
-        tableView_accounts->setObjectName("tableView_accounts");
-
-        verticalLayout_7->addWidget(tableView_accounts);
-
-
-        horizontalLayout_8->addLayout(verticalLayout_7);
+        horizontalLayout_8->addItem(horizontalSpacer_9);
 
 
         verticalLayout_9->addLayout(horizontalLayout_8);
@@ -606,6 +553,10 @@ public:
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName("horizontalLayout_9");
+        horizontalSpacer_11 = new QSpacerItem(120, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_11);
+
         tabWidget_Paymants = new QTabWidget(tab_payments);
         tabWidget_Paymants->setObjectName("tabWidget_Paymants");
         tab_3 = new QWidget();
@@ -699,6 +650,10 @@ public:
 
         horizontalLayout_24->addWidget(lineEdit_Payments_name);
 
+        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_24->addItem(horizontalSpacer_12);
+
 
         verticalLayout_30->addLayout(horizontalLayout_24);
 
@@ -713,6 +668,10 @@ public:
         lineEdit_Payments_amount->setObjectName("lineEdit_Payments_amount");
 
         horizontalLayout_25->addWidget(lineEdit_Payments_amount);
+
+        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_25->addItem(horizontalSpacer_13);
 
 
         verticalLayout_30->addLayout(horizontalLayout_25);
@@ -741,21 +700,9 @@ public:
 
         horizontalLayout_9->addWidget(tabWidget_Paymants);
 
-        verticalLayout_10 = new QVBoxLayout();
-        verticalLayout_10->setObjectName("verticalLayout_10");
-        label_15 = new QLabel(tab_payments);
-        label_15->setObjectName("label_15");
-        label_15->setAlignment(Qt::AlignCenter);
+        horizontalSpacer_10 = new QSpacerItem(120, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        verticalLayout_10->addWidget(label_15);
-
-        tableView_payments = new QTableView(tab_payments);
-        tableView_payments->setObjectName("tableView_payments");
-
-        verticalLayout_10->addWidget(tableView_payments);
-
-
-        horizontalLayout_9->addLayout(verticalLayout_10);
+        horizontalLayout_9->addItem(horizontalSpacer_10);
 
 
         verticalLayout_19->addLayout(horizontalLayout_9);
@@ -774,7 +721,7 @@ public:
         user_tab_singIn->setObjectName("user_tab_singIn");
         layoutWidget = new QWidget(user_tab_singIn);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(70, 40, 401, 271));
+        layoutWidget->setGeometry(QRect(190, 50, 401, 271));
         verticalLayout_6 = new QVBoxLayout(layoutWidget);
         verticalLayout_6->setObjectName("verticalLayout_6");
         verticalLayout_6->setContentsMargins(0, 0, 0, 0);
@@ -928,6 +875,10 @@ public:
         verticalLayout_17->setObjectName("verticalLayout_17");
         verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setObjectName("verticalLayout_11");
+        verticalSpacer_11 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_11);
+
         label_14 = new QLabel(user_tab_singUP);
         label_14->setObjectName("label_14");
         label_14->setAlignment(Qt::AlignCenter);
@@ -944,6 +895,10 @@ public:
 
         verticalLayout_8 = new QVBoxLayout();
         verticalLayout_8->setObjectName("verticalLayout_8");
+        verticalSpacer_10 = new QSpacerItem(20, 60, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_8->addItem(verticalSpacer_10);
+
         label_7 = new QLabel(user_tab_singUP);
         label_7->setObjectName("label_7");
         label_7->setAlignment(Qt::AlignCenter);
@@ -955,7 +910,7 @@ public:
 
         verticalLayout_8->addWidget(lineEdit_SingUp_password);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_8->addItem(verticalSpacer);
 
@@ -978,6 +933,10 @@ public:
         user_tab_displayedUser->setObjectName("user_tab_displayedUser");
         horizontalLayout_6 = new QHBoxLayout(user_tab_displayedUser);
         horizontalLayout_6->setObjectName("horizontalLayout_6");
+        horizontalSpacer_16 = new QSpacerItem(150, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_16);
+
         verticalLayout_23 = new QVBoxLayout();
         verticalLayout_23->setObjectName("verticalLayout_23");
         horizontalLayout_5 = new QHBoxLayout();
@@ -1036,6 +995,21 @@ public:
 
         verticalLayout_22->addLayout(horizontalLayout_11);
 
+        verticalSpacer_12 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_22->addItem(verticalSpacer_12);
+
+        pushButton = new QPushButton(user_tab_displayedUser);
+        pushButton->setObjectName("pushButton");
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy2);
+        pushButton->setMinimumSize(QSize(0, 0));
+
+        verticalLayout_22->addWidget(pushButton);
+
         verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_22->addItem(verticalSpacer_5);
@@ -1046,23 +1020,9 @@ public:
 
         horizontalLayout_6->addLayout(verticalLayout_23);
 
-        verticalLayout_24 = new QVBoxLayout();
-        verticalLayout_24->setObjectName("verticalLayout_24");
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        horizontalSpacer_17 = new QSpacerItem(150, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        verticalLayout_24->addItem(verticalSpacer_4);
-
-        pushButton = new QPushButton(user_tab_displayedUser);
-        pushButton->setObjectName("pushButton");
-
-        verticalLayout_24->addWidget(pushButton);
-
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_24->addItem(verticalSpacer_3);
-
-
-        horizontalLayout_6->addLayout(verticalLayout_24);
+        horizontalLayout_6->addItem(horizontalSpacer_17);
 
         tabWidget_user->addTab(user_tab_displayedUser, QString());
 
@@ -1079,10 +1039,10 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(0);
         tabWidget_Accounts->setCurrentIndex(0);
         tabWidget_Paymants->setCurrentIndex(1);
-        tabWidget_user->setCurrentIndex(2);
+        tabWidget_user->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1090,12 +1050,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Courswork", nullptr));
-        label_username->setText(QString());
-        label_userData_main_login->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
-        label_23->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
-        label_userData_main_balance->setText(QCoreApplication::translate("MainWindow", "0.0", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_main), QCoreApplication::translate("MainWindow", "Main", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Coursework", nullptr));
         label_username_2->setText(QString());
         label_userData_account_login->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
         label_33->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
@@ -1106,7 +1061,7 @@ public:
         pushButton_Accounts_create->setText(QCoreApplication::translate("MainWindow", "Create", nullptr));
         tabWidget_Accounts->setTabText(tabWidget_Accounts->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         label_12->setText(QCoreApplication::translate("MainWindow", "Account:", nullptr));
-        pushButton_Account_Chose->setText(QCoreApplication::translate("MainWindow", "Chose", nullptr));
+        pushButton_Account_Chose->setText(QCoreApplication::translate("MainWindow", "Choose", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
         label_Account_Balance->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         pushButton_Accounts_Recharge->setText(QCoreApplication::translate("MainWindow", "Recharge account", nullptr));
@@ -1119,14 +1074,13 @@ public:
         label_25->setText(QCoreApplication::translate("MainWindow", "Amount:", nullptr));
         pushButton_Recharging->setText(QCoreApplication::translate("MainWindow", "Recharging", nullptr));
         tabWidget_Accounts->setTabText(tabWidget_Accounts->indexOf(tab_5), QCoreApplication::translate("MainWindow", "Page", nullptr));
-        label_11->setText(QCoreApplication::translate("MainWindow", "Accounts", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_accounts), QCoreApplication::translate("MainWindow", "Accounts", nullptr));
         label_username_5->setText(QString());
         label_userData_payment_login->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
         label_31->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
         label_userData_paiment_balance->setText(QCoreApplication::translate("MainWindow", "0.0", nullptr));
         label_13->setText(QCoreApplication::translate("MainWindow", "Info about Payment:", nullptr));
-        pushButton_Payments_ChosePaymant->setText(QCoreApplication::translate("MainWindow", "Chose", nullptr));
+        pushButton_Payments_ChosePaymant->setText(QCoreApplication::translate("MainWindow", "Choose", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Amount:", nullptr));
         label_Paymants_amount->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         label_19->setText(QCoreApplication::translate("MainWindow", "Date:", nullptr));
@@ -1139,7 +1093,6 @@ public:
         label_28->setText(QCoreApplication::translate("MainWindow", "Description:", nullptr));
         pushButton_Payments_pay->setText(QCoreApplication::translate("MainWindow", "Pay", nullptr));
         tabWidget_Paymants->setTabText(tabWidget_Paymants->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
-        label_15->setText(QCoreApplication::translate("MainWindow", "Payments", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_payments), QCoreApplication::translate("MainWindow", "Payments", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "SING IN", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Input Login", nullptr));
@@ -1157,12 +1110,12 @@ public:
         pushButton_SingUp_SIngIn_Up->setText(QCoreApplication::translate("MainWindow", "Sing up", nullptr));
         tabWidget_user->setTabText(tabWidget_user->indexOf(user_tab_singUP), QCoreApplication::translate("MainWindow", "SIng up", nullptr));
         label_22->setText(QCoreApplication::translate("MainWindow", "Account:", nullptr));
-        label_userLogin->setText(QCoreApplication::translate("MainWindow", "\320\233\320\276\320\263\321\226\320\275", nullptr));
+        label_userLogin->setText(QCoreApplication::translate("MainWindow", "LOGIN", nullptr));
         label_userName->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\321\226\320\267\320\262\320\270\321\211\320\265 \321\226\320\274\321\217 \320\277\320\276-\320\261\320\260\321\202\321\214\320\272\320\276\320\262\321\226", nullptr));
         label_20->setText(QCoreApplication::translate("MainWindow", "Address:", nullptr));
-        label_userAddress->setText(QCoreApplication::translate("MainWindow", "\320\220\320\264\321\200\320\265\321\201\320\260 ", nullptr));
+        label_userAddress->setText(QCoreApplication::translate("MainWindow", "ESSRE", nullptr));
         label_21->setText(QCoreApplication::translate("MainWindow", "Age:", nullptr));
-        label_userAge->setText(QCoreApplication::translate("MainWindow", "\320\222\321\226\320\272", nullptr));
+        label_userAge->setText(QCoreApplication::translate("MainWindow", "21", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Change user", nullptr));
         tabWidget_user->setTabText(tabWidget_user->indexOf(user_tab_displayedUser), QCoreApplication::translate("MainWindow", "display info", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_user), QCoreApplication::translate("MainWindow", "User", nullptr));

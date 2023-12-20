@@ -27,6 +27,8 @@ MainWindow::~MainWindow()
     delete currentUser;
     delete currentAccount;
     delete currentPayment;
+    if (model)
+            delete model;
 }
 //User
 
@@ -132,6 +134,8 @@ void MainWindow::on_pushButton_Accounts_create_clicked()
 
         ui->tabWidget_Accounts->setCurrentIndex(1);
 
+        currentAccount = new Account(*dbManager->getLastAccountForUser(currentUser->getId()));
+
     }
 
 }
@@ -152,7 +156,6 @@ void MainWindow::on_pushButton_Recharging_clicked()
         qDebug() << "Error updating data into the database.";}
     MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
 }
-//Тут через те що ми використовуємо конструктор копіювання данні які ми змінюємо не записуються в оригінальний обєкт
 
 
 void MainWindow::on_pushButton_Accounts_Recharge_clicked()
@@ -176,6 +179,8 @@ void MainWindow::on_pushButton_Account_Chose_clicked()
         ui->comboBox_Payments->addItem(name);
     }
     MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
+
+
 }
 //Paymants
 
@@ -242,12 +247,16 @@ void MainWindow::on_pushButton_Payments_ChosePaymant_clicked()
 
 }
 void  MainWindow::changeUsername(QString name){
-    ui->label_userData_main_login->setText(name);
+
     ui->label_userData_account_login->setText(name);
     ui->label_userData_payment_login->setText(name);
 }
 void  MainWindow::changeBalance(QString balance){
-    ui->label_userData_main_balance->setText(balance);
+
     ui->label_userData_account_balance->setText(balance);
     ui->label_userData_paiment_balance->setText(balance);
 }
+
+
+
+

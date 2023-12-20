@@ -29,6 +29,7 @@ public:
     virtual Account getAccountByName(const QString &accountName) = 0;
     virtual Payment getPaymentByName(const QString &paymentName) = 0;
     virtual Payment* getLastPaymentForAccount(int currentAccountId) = 0;
+    virtual Account* getLastAccountForUser(int currentUserId) =0;
 };
 
 #endif // DBMANAGER_H

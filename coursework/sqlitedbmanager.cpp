@@ -493,3 +493,30 @@ Payment* SqliteDBManager::getLastPaymentForAccount(int currentAccountId) {
 
     return lastPayment;
 }
+Account* SqliteDBManager::getLastAccountForUser(int currentUserId) {
+    QSqlQuery query;
+    Account *lastAccount = nullptr;
+
+    // SQL query to retrieve the last account for the specified user ID
+    query.prepare("SELECT * FROM " TABLE_ACCOUNT " WHERE " TABLE_ACCOUNT_USER_ID " = :UserId ORDER BY id DESC LIMIT 1");
+    query.bindValue(":UserId", currentUserId);
+
+    // Execute the query
+    if (query.exec() && query.next()) {
+        // Retrieve account information from the query result and create an Account object
+        int accountId  = query.value("id").toInt();
+        QString accountName = query.value(TABLE_ACCOUNT_NAME).toString();
+        double amount = query.value(TABLE_ACCOUNT_AMOUNT).toDouble();
+        double balance = query.value(TABLE_ACCOUNT_BALANCE).toDouble();
+
+        lastAccount = new Account(accountId, currentUserId, accountName, amount, balance);
+
+        qDebug() << "Last account retrieved successfully for user ID" << currentUserId;
+    } else {
+        qDebug() << "Error retrieving last account for user ID" << currentUserId;
+        qDebug() << query.lastError().text();
+        qDebug() << query.lastQuery();
+    }
+
+    return lastAccount;
+}

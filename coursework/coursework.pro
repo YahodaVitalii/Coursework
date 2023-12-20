@@ -10,7 +10,6 @@ CONFIG += c++17
 
 SOURCES += \
     account.cpp \
-    dbmanager.cpp \
     main.cpp \
     mainwindow.cpp \
     payment.cpp \

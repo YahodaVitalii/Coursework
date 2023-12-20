@@ -10,7 +10,7 @@ class Account
        double amount;
        double balance;
 public:
-       QVector<Payment*> payments;
+
     Account(){}
     Account(int id, int userId, QString name, double amount, double balance);
 
