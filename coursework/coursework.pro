@@ -14,7 +14,8 @@ SOURCES += \
     mainwindow.cpp \
     payment.cpp \
     sqlitedbmanager.cpp \
-    user.cpp
+    user.cpp \
+    userwindow.cpp
 
 HEADERS += \
     account.h \
@@ -22,10 +23,12 @@ HEADERS += \
     mainwindow.h \
     payment.h \
     sqlitedbmanager.h \
-    user.h
+    user.h \
+    userwindow.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    userwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

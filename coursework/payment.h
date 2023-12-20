@@ -13,13 +13,13 @@ public:
     double getAmount() const;
     QDate getDate() const;
     QString getDescription() const;
-     QString getName() const;
-     void setId(int newId);
-        void setAccountId(int newAccountId);
-        void setAmount(double newAmount);
-        void setDate(const QDate &newDate);
-        void setDescription(const QString &newDescription);
-        void setName(const QString &newName);
+    QString getName() const;
+    void setId(int newId);
+    void setAccountId(int newAccountId);
+    void setAmount(double newAmount);
+    void setDate(const QDate &newDate);
+    void setDescription(const QString &newDescription);
+    void setName(const QString &newName);
 private:
     int id;
     int accountId;      // ID рахунку

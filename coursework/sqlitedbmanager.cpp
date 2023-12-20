@@ -104,7 +104,7 @@ bool SqliteDBManager::createTables() {
                          TABLE_ACCOUNT_AMOUNT      " DECIMAL(10, 2)  NOT NULL,"
                          TABLE_ACCOUNT_BALANCE     " DECIMAL(10, 2)  NOT NULL,"
                          TABLE_ACCOUNT_USER_ID     " INTEGER         NOT NULL,"
-                        "FOREIGN KEY ( " TABLE_ACCOUNT_USER_ID ") REFERENCES " TABLE_USER " ( id ) )"))  {
+                         "FOREIGN KEY ( " TABLE_ACCOUNT_USER_ID ") REFERENCES " TABLE_USER " ( id ) )"))  {
         qDebug() << "DataBase: error of create " << TABLE_ACCOUNT;
         qDebug() << query.lastError().text();
         return false;
@@ -115,35 +115,35 @@ bool SqliteDBManager::createTables() {
                               TABLE_PAYMENT_DATE        " DATE            NOT NULL,"
                               TABLE_PAYMENT_DESCRIPTION " VARCHAR(255)    NOT NULL,"
                               TABLE_PAYMENT_ACCOUNT_ID  " INTEGER         NOT NULL,"
-                             "FOREIGN KEY ( " TABLE_PAYMENT_ACCOUNT_ID ") REFERENCES " TABLE_ACCOUNT " ( id ) )"))  {
-             qDebug() << "DataBase: error of create " << TABLE_ACCOUNT;
-             qDebug() << query.lastError().text();
-             return false;
-         }else
+                              "FOREIGN KEY ( " TABLE_PAYMENT_ACCOUNT_ID ") REFERENCES " TABLE_ACCOUNT " ( id ) )"))  {
+        qDebug() << "DataBase: error of create " << TABLE_ACCOUNT;
+        qDebug() << query.lastError().text();
+        return false;
+    }else
         return true;
 }
 
 // Метод для вставки записів у таблицю messages
 bool SqliteDBManager::inserIntoTable(const User& user) {
     // SQL-запит формується із об'єкта класу Messageu
- //  qDebug() << user.toString();
+    //  qDebug() << user.toString();
     QSqlQuery query;
     /*
      * Спочатку SQL-запит формується з ключами, які потім зв'язуються методом bindValue
      * для підставки даних із об'єкта класу Message
      * */
     query.prepare("INSERT INTO " TABLE_USER " ( "
-           TABLE_USER_NAME ", "
-           TABLE_USER_ADDRESS ", "
-           TABLE_USER_USERNAME ", "
-           TABLE_USER_PASSWORD ", "
-           TABLE_USER_AGE " ) "
-           "VALUES (:Name, :Address, :Username, :Password, :Age )");
-   query.bindValue(":Name", user.getName());
-   query.bindValue(":Address", user.getAddress());
-   query.bindValue(":Username", user.getUsername());
-   query.bindValue(":Password", user.getPassword());
-   query.bindValue(":Age", user.getAge());
+                  TABLE_USER_NAME ", "
+                  TABLE_USER_ADDRESS ", "
+                  TABLE_USER_USERNAME ", "
+                  TABLE_USER_PASSWORD ", "
+                  TABLE_USER_AGE " ) "
+                                 "VALUES (:Name, :Address, :Username, :Password, :Age )");
+    query.bindValue(":Name", user.getName());
+    query.bindValue(":Address", user.getAddress());
+    query.bindValue(":Username", user.getUsername());
+    query.bindValue(":Password", user.getPassword());
+    query.bindValue(":Age", user.getAge());
 
     // Після чого виконується запит методом exec()
     if (!query.exec()) {
@@ -157,22 +157,22 @@ bool SqliteDBManager::inserIntoTable(const User& user) {
 }
 bool SqliteDBManager::inserIntoTable(const Account& account) {
     // SQL-запит формується із об'єкта класу Messageu
- //  qDebug() << user.toString();
+    //  qDebug() << user.toString();
     QSqlQuery query;
     /*
      * Спочатку SQL-запит формується з ключами, які потім зв'язуються методом bindValue
      * для підставки даних із об'єкта класу Message
      * */
     query.prepare("INSERT INTO " TABLE_ACCOUNT " ( "
-           TABLE_ACCOUNT_NAME ", "
-           TABLE_ACCOUNT_AMOUNT ", "
-           TABLE_ACCOUNT_BALANCE ", "
-           TABLE_ACCOUNT_USER_ID " ) "
-           "VALUES (:Name, :Amount, :Balance, :UserId )");
-   query.bindValue(":Name", account.getName());
-   query.bindValue(":Amount", account.getAmount());
-   query.bindValue(":Balance", account.getBalance());
-   query.bindValue(":UserId", account.getUserId());
+                  TABLE_ACCOUNT_NAME ", "
+                  TABLE_ACCOUNT_AMOUNT ", "
+                  TABLE_ACCOUNT_BALANCE ", "
+                  TABLE_ACCOUNT_USER_ID " ) "
+                                        "VALUES (:Name, :Amount, :Balance, :UserId )");
+    query.bindValue(":Name", account.getName());
+    query.bindValue(":Amount", account.getAmount());
+    query.bindValue(":Balance", account.getBalance());
+    query.bindValue(":UserId", account.getUserId());
     // Після чого виконується запит методом exec()
     if (!query.exec()) {
         qDebug() << "error insert into " << TABLE_ACCOUNT;
@@ -185,24 +185,24 @@ bool SqliteDBManager::inserIntoTable(const Account& account) {
 }
 bool SqliteDBManager::inserIntoTable(const Payment& payment) {
     // SQL-запит формується із об'єкта класу Messageu
- //  qDebug() << user.toString();
+    //  qDebug() << user.toString();
     QSqlQuery query;
     /*
      * Спочатку SQL-запит формується з ключами, які потім зв'язуються методом bindValue
      * для підставки даних із об'єкта класу Message
      * */
     query.prepare("INSERT INTO " TABLE_PAYMENT " ( "
-           TABLE_PAYMENT_NAME ", "
-           TABLE_PAYMENT_AMOUNT ", "
-           TABLE_PAYMENT_DATE ", "
-           TABLE_PAYMENT_DESCRIPTION ", "
-            TABLE_PAYMENT_ACCOUNT_ID  " ) "
-           "VALUES (:Name, :Amount, :Date, :Description, :AccountId)");
-   query.bindValue(":Name", payment.getName());
-   query.bindValue(":Amount", payment.getAmount());
-   query.bindValue(":Date", payment.getDate());
-   query.bindValue(":Description", payment.getDescription());
-   query.bindValue(":AccountId", payment.getAccountId());
+                  TABLE_PAYMENT_NAME ", "
+                  TABLE_PAYMENT_AMOUNT ", "
+                  TABLE_PAYMENT_DATE ", "
+                  TABLE_PAYMENT_DESCRIPTION ", "
+                  TABLE_PAYMENT_ACCOUNT_ID  " ) "
+                                            "VALUES (:Name, :Amount, :Date, :Description, :AccountId)");
+    query.bindValue(":Name", payment.getName());
+    query.bindValue(":Amount", payment.getAmount());
+    query.bindValue(":Date", payment.getDate());
+    query.bindValue(":Description", payment.getDescription());
+    query.bindValue(":AccountId", payment.getAccountId());
     // Після чого виконується запит методом exec()
     if (!query.exec()) {
         qDebug() << "error insert into " << TABLE_PAYMENT;
@@ -219,7 +219,7 @@ bool SqliteDBManager::updateAccountBalance(int accountId, double newBalance) {
     // SQL query to update the balance for the specified account
     query.prepare("UPDATE " TABLE_ACCOUNT " SET "
                   TABLE_ACCOUNT_BALANCE " = :NewBalance "
-                  "WHERE id = :AccountId");
+                                        "WHERE id = :AccountId");
 
     query.bindValue(":NewBalance", newBalance);
     query.bindValue(":AccountId", accountId);
@@ -242,7 +242,7 @@ bool SqliteDBManager::updateAccountAmount(int accountId, double newAmount) {
     // SQL query to update the amount for the specified account
     query.prepare("UPDATE " TABLE_ACCOUNT " SET "
                   TABLE_ACCOUNT_AMOUNT " = :NewAmount "
-                  "WHERE id = :AccountId");
+                                       "WHERE id = :AccountId");
 
     query.bindValue(":NewAmount", newAmount);
     query.bindValue(":AccountId", accountId);

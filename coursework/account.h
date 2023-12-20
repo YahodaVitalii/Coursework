@@ -4,11 +4,11 @@
 #include "payment.h"
 class Account
 {
-       int id;
-       int userId;
-       QString name;
-       double amount;
-       double balance;
+    int id;
+    int userId;
+    QString name;
+    double amount;
+    double balance;
 public:
 
     Account(){}
@@ -24,10 +24,10 @@ public:
     // Методи для зміни значень властивостей
 
     void setId(int newId);
-     void setUserId(int newUserId);
-     void setAmount(double newAmount);
-     void setBalance(double newBalance);
-     void setName(const QString &newName);
+    void setUserId(int newUserId);
+    void setAmount(double newAmount);
+    void setBalance(double newBalance);
+    void setName(const QString &newName);
 };
 
 #endif // ACCOUNT_H

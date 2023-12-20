@@ -8,6 +8,7 @@
 #include "user.h"
 #include "dbmanager.h"
 #include "sqlitedbmanager.h"
+#include "userwindow.h"
 #include <QDebug>
 class QSqlTableModel;
 
@@ -22,20 +23,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-   explicit  MainWindow(DBManager* dbManrage, QWidget *parent = nullptr);
+    explicit  MainWindow(DBManager* dbManrage, QWidget *parent = nullptr);
     void changeUsername(QString name);
     void changeBalance(QString balance);
 
     ~MainWindow();
 
 private slots:
-    void on_pushButton_SingIn_SIngUp_clicked();
-
-    void on_pushButton_SingUp_SIngIn_Up_clicked();
-
-    void on_pushButton_SingIn_SIngIn_clicked();
-
-    void on_pushButton_clicked();
 
     void on_pushButton_Accounts_create_clicked();
 
@@ -53,9 +47,15 @@ private slots:
     void on_pushButton_Payments_pay_clicked();
 
     void on_pushButton_Payments_ChosePaymant_clicked();
+    void on_pushButton_Accounts_changeUser_clicked();
 
+public slots:
+    void getCurrentUser(User *User);
 private:
     Ui::MainWindow *ui;
+    UserWindow* userWindow;
+
+
     DBManager* dbManager;
     QSqlTableModel* model;
 

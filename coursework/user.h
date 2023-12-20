@@ -18,7 +18,7 @@ public:
     }
     User(int id, QString name, QString address, QString username, QString password, int age);
     User(const User &other);
-     int getId() const;
+    int getId() const;
     QString getName() const;
     QString getAddress() const;
     QString getUsername() const;
@@ -26,11 +26,11 @@ public:
     int getAge() const;
 
     void setId(int newId);
-        void setName(const QString &newName);
-        void setAddress(const QString &newAddress);
-        void setUsername(const QString &newUsername);
-        void setPassword(const QString &newPassword);
-        void setAge(int newAge);
+    void setName(const QString &newName);
+    void setAddress(const QString &newAddress);
+    void setUsername(const QString &newUsername);
+    void setPassword(const QString &newPassword);
+    void setAge(int newAge);
 
     QString toString() const;
 };

@@ -10,10 +10,12 @@ MainWindow::MainWindow(DBManager* dbManager,QWidget *parent)
     , ui(new Ui::MainWindow), dbManager(dbManager)
 {
     ui->setupUi(this);
+    userWindow = new UserWindow(this->dbManager,this);
+    userWindow ->setModal(false);
+    connect(userWindow, &UserWindow::setCurrentUser, this, &MainWindow::getCurrentUser);
 
     ui->tabWidget->setCurrentIndex(0);
-    ui->tabWidget_user->tabBar()->hide();
-    ui->tabWidget_user->setCurrentIndex(0);
+
     ui->tabWidget_Accounts->tabBar()->hide();
     ui->tabWidget_Accounts->setCurrentIndex(1);
     ui->tabWidget_Paymants->tabBar()->hide();
@@ -24,96 +26,27 @@ MainWindow::MainWindow(DBManager* dbManager,QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete userWindow;
     delete currentUser;
     delete currentAccount;
     delete currentPayment;
     if (model)
-            delete model;
+        delete model;
 }
 //User
+void MainWindow::getCurrentUser(User *user){
+    MainWindow::changeUsername(user->getUsername());
+    currentUser = new User(*user);
 
-void MainWindow::on_pushButton_SingIn_SIngUp_clicked()
-{
-    ui->tabWidget_user->setCurrentIndex(1);
+
+    ui->comboBox_Account->clear();
+
+    QVector<QString> accountNames = dbManager->getAllAccountNamesForCurrentUser(currentUser->getId());
+    for (const QString& name : accountNames) {
+        ui->comboBox_Account->addItem(name);
+    }
 }
 
-
-void MainWindow::on_pushButton_SingUp_SIngIn_Up_clicked()
-{
-    if (    ui->lineEdit_SingUp_fullname->text().isEmpty() &&
-            ui->lineEdit_SingUp_address->text().isEmpty() &&
-            ui->lineEdit_SingUp_age->text().isEmpty() &&
-            ui->lineEdit_SingUp_password->text().isEmpty() &&
-            ui->lineEdit_SingUp_name->text().isEmpty())
-    {
-        QMessageBox::information(nullptr, "Empty field", "Enter all fields");
-    }
-    else{
-        User* user = new User(3,ui->lineEdit_SingUp_fullname->text(),
-                              ui->lineEdit_SingUp_address->text(),
-                              ui->lineEdit_SingUp_name->text(),
-                              ui->lineEdit_SingUp_password->text(),
-                              ui->lineEdit_SingUp_age->text().toInt());
-        ui->tabWidget_user->setCurrentIndex(0);
-
-        if (!dbManager->inserIntoTable(*user)) {
-            qDebug() << "Error inserting data into the database.";}
-
-    }
-
-}
-
-
-void MainWindow::on_pushButton_SingIn_SIngIn_clicked()
-{
-    User* user;
-
-    if (
-            ui->lineEdit_SingIn_password->text().isEmpty() &&
-            ui->lineEdit_SingIn_name->text().isEmpty())
-    {
-        QMessageBox::information(nullptr, "Empty field", "Enter all fields");
-    }
-    else{
-        bool userFound = false;
-        user = new User(dbManager->getUserById(dbManager->findUserIdByUsername(ui->lineEdit_SingIn_name->text())));
-
-        if(user->getPassword() == ui->lineEdit_SingIn_password->text()) {
-
-            ui->label_userLogin->setText(user->getUsername());
-            // ui->label_userData_main_login->setText(user->getUsername());
-            ui->label_userName->setText(user->getName());
-            ui->label_userAddress->setText(user->getAddress());
-            ui->label_userAge->setText(QString::number(user->getAge()));
-            ui->tabWidget_user->setCurrentIndex(2);
-            MainWindow::changeUsername(user->getUsername());
-            currentUser = new User(*user);
-
-
-            ui->comboBox_Account->clear();
-
-            QVector<QString> accountNames = dbManager->getAllAccountNamesForCurrentUser(currentUser->getId());
-            for (const QString& name : accountNames) {
-                ui->comboBox_Account->addItem(name);
-            }
-
-            userFound = true;
-        }
-
-
-        if (!userFound) {
-            // Виведення повідомлення про невірний логін чи пароль
-            QMessageBox::warning(this, "Error", "Invalid login or password", QMessageBox::Ok);
-        }
-
-    }
-    delete user;
-}
-
-void MainWindow::on_pushButton_clicked()
-{
-    ui->tabWidget_user->setCurrentIndex(0);
-}
 //Acounts
 
 void MainWindow::on_pushButton_Accounts_create_clicked()
@@ -231,7 +164,7 @@ void MainWindow::on_pushButton_Payments_pay_clicked()
         ui->label_Account_Amount->setText(QString::number( currentAccount->getAmount() ));
 
         ui->tabWidget_Paymants->setCurrentIndex(0);
-         MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
+        MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
 
     }
 }
@@ -259,4 +192,10 @@ void  MainWindow::changeBalance(QString balance){
 
 
 
+
+
+void MainWindow::on_pushButton_Accounts_changeUser_clicked()
+{
+    userWindow->show();
+}
 
