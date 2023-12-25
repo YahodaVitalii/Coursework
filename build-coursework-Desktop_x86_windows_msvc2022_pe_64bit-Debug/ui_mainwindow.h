@@ -32,12 +32,28 @@ public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_34;
     QTabWidget *tabWidget;
+    QWidget *tab_about;
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer_2;
+    QLabel *label_4;
+    QLabel *label_5;
+    QLabel *label_6;
+    QSpacerItem *verticalSpacer_3;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_2;
+    QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer_4;
+    QLabel *label_7;
+    QLabel *label_8;
+    QSpacerItem *verticalSpacer;
     QWidget *tab_accounts;
     QVBoxLayout *verticalLayout_9;
     QVBoxLayout *verticalLayout_33;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QLabel *label_username_2;
+    QLabel *label_9;
     QLabel *label_userData_account_login;
     QHBoxLayout *horizontalLayout_28;
     QSpacerItem *horizontalSpacer_8;
@@ -161,6 +177,86 @@ public:
         tabWidget->setAutoFillBackground(true);
         tabWidget->setTabShape(QTabWidget::Rounded);
         tabWidget->setElideMode(Qt::ElideMiddle);
+        tab_about = new QWidget();
+        tab_about->setObjectName("tab_about");
+        verticalLayout_3 = new QVBoxLayout(tab_about);
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_2);
+
+        label_4 = new QLabel(tab_about);
+        label_4->setObjectName("label_4");
+        QFont font;
+        font.setPointSize(14);
+        font.setBold(true);
+        label_4->setFont(font);
+        label_4->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label_4);
+
+        label_5 = new QLabel(tab_about);
+        label_5->setObjectName("label_5");
+        QFont font1;
+        font1.setPointSize(12);
+        label_5->setFont(font1);
+        label_5->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label_5);
+
+        label_6 = new QLabel(tab_about);
+        label_6->setObjectName("label_6");
+        label_6->setFont(font1);
+        label_6->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label_6);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_3);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName("verticalLayout");
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_4);
+
+        label_7 = new QLabel(tab_about);
+        label_7->setObjectName("label_7");
+        QFont font2;
+        font2.setPointSize(10);
+        label_7->setFont(font2);
+
+        verticalLayout->addWidget(label_7);
+
+        label_8 = new QLabel(tab_about);
+        label_8->setObjectName("label_8");
+        label_8->setFont(font2);
+
+        verticalLayout->addWidget(label_8);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+
+        verticalLayout_3->addLayout(horizontalLayout);
+
+        tabWidget->addTab(tab_about, QString());
         tab_accounts = new QWidget();
         tab_accounts->setObjectName("tab_accounts");
         verticalLayout_9 = new QVBoxLayout(tab_accounts);
@@ -177,10 +273,16 @@ public:
         label_username_2->setObjectName("label_username_2");
         label_username_2->setMinimumSize(QSize(30, 30));
         label_username_2->setMaximumSize(QSize(40, 40));
-        label_username_2->setPixmap(QPixmap(QString::fromUtf8("../Image/user.png")));
+        label_username_2->setPixmap(QPixmap(QString::fromUtf8("Image/user.png")));
         label_username_2->setScaledContents(true);
 
         horizontalLayout_2->addWidget(label_username_2);
+
+        label_9 = new QLabel(tab_accounts);
+        label_9->setObjectName("label_9");
+        label_9->setPixmap(QPixmap(QString::fromUtf8("Image/user.png")));
+
+        horizontalLayout_2->addWidget(label_9);
 
         label_userData_account_login = new QLabel(tab_accounts);
         label_userData_account_login->setObjectName("label_userData_account_login");
@@ -203,15 +305,15 @@ public:
 
         label_33 = new QLabel(tab_accounts);
         label_33->setObjectName("label_33");
-        QFont font;
-        font.setPointSize(8);
-        label_33->setFont(font);
+        QFont font3;
+        font3.setPointSize(8);
+        label_33->setFont(font3);
 
         horizontalLayout_28->addWidget(label_33);
 
         label_userData_account_balance = new QLabel(tab_accounts);
         label_userData_account_balance->setObjectName("label_userData_account_balance");
-        label_userData_account_balance->setFont(font);
+        label_userData_account_balance->setFont(font3);
 
         horizontalLayout_28->addWidget(label_userData_account_balance);
 
@@ -445,8 +547,9 @@ public:
         label_username_5->setObjectName("label_username_5");
         label_username_5->setMinimumSize(QSize(30, 30));
         label_username_5->setMaximumSize(QSize(40, 40));
-        label_username_5->setPixmap(QPixmap(QString::fromUtf8("../Image/user.png")));
+        label_username_5->setPixmap(QPixmap(QString::fromUtf8("Image/user.png")));
         label_username_5->setScaledContents(true);
+        label_username_5->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_4->addWidget(label_username_5);
 
@@ -468,13 +571,13 @@ public:
 
         label_31 = new QLabel(tab_payments);
         label_31->setObjectName("label_31");
-        label_31->setFont(font);
+        label_31->setFont(font3);
 
         horizontalLayout_27->addWidget(label_31);
 
         label_userData_paiment_balance = new QLabel(tab_payments);
         label_userData_paiment_balance->setObjectName("label_userData_paiment_balance");
-        label_userData_paiment_balance->setFont(font);
+        label_userData_paiment_balance->setFont(font3);
 
         horizontalLayout_27->addWidget(label_userData_paiment_balance);
 
@@ -648,8 +751,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
-        tabWidget_Accounts->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(1);
+        tabWidget_Accounts->setCurrentIndex(2);
         tabWidget_Paymants->setCurrentIndex(1);
 
 
@@ -659,7 +762,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Coursework", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "COURSEWORK", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "from the discipline:\n"
+"\"Object-oriented programming\"", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "on the topic: \"Development of software for keeping records of utility payments.\"", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "Student  of the KN-323", nullptr));
+        label_8->setText(QCoreApplication::translate("MainWindow", "Yagoda V.V.", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_about), QCoreApplication::translate("MainWindow", "About the Program", nullptr));
         label_username_2->setText(QString());
+        label_9->setText(QString());
         label_userData_account_login->setText(QCoreApplication::translate("MainWindow", "User Name", nullptr));
         label_33->setText(QCoreApplication::translate("MainWindow", "Balance:", nullptr));
         label_userData_account_balance->setText(QCoreApplication::translate("MainWindow", "0.0", nullptr));
