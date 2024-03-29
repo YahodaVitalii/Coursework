@@ -18,6 +18,9 @@ SOURCES += \
     userwindow.cpp
 
 HEADERS += \
+    QDialog.h \
+    QMainWindow.h \
+    QWidget.h \
     account.h \
     dbmanager.h \
     mainwindow.h \

@@ -27,9 +27,12 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete userWindow;
-    delete currentUser;
-    delete currentAccount;
-    delete currentPayment;
+    if (currentUser)
+        delete currentUser;
+    if (currentAccount)
+        delete currentAccount;
+    if (currentPayment)
+        delete currentPayment;
     if (model)
         delete model;
 }
@@ -51,6 +54,10 @@ void MainWindow::getCurrentUser(User *user){
 
 void MainWindow::on_pushButton_Accounts_create_clicked()
 {
+    if(currentUser == nullptr){
+     QMessageBox::information(nullptr, "Current user exist", "Change user");
+    }
+    else{
     if ( ui->lineEdit_Account_name->text().isEmpty())
     {
         QMessageBox::information(nullptr, "Empty field", "Enter all fields");
@@ -70,7 +77,7 @@ void MainWindow::on_pushButton_Accounts_create_clicked()
         currentAccount = new Account(*dbManager->getLastAccountForUser(currentUser->getId()));
 
     }
-
+   }
 }
 
 
@@ -80,7 +87,10 @@ void MainWindow::on_pushButton_Accounts_add_clicked()
 }
 
 void MainWindow::on_pushButton_Recharging_clicked()
-{
+{     if(currentUser == nullptr){
+        QMessageBox::information(nullptr, "Current user exist", "Change user");
+       }
+       else{
     ui->tabWidget_Accounts->setCurrentIndex(1);
     currentAccount->setBalance(currentAccount->getBalance() + ui->lineEdit_Recharging->text().toDouble());
     ui->label_Account_Balance->setText(QString::number( currentAccount->getBalance() ));
@@ -88,6 +98,7 @@ void MainWindow::on_pushButton_Recharging_clicked()
     if( !dbManager->updateAccountBalance(currentAccount->getId(),  currentAccount->getBalance())){
         qDebug() << "Error updating data into the database.";}
     MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
+    }
 }
 
 
@@ -100,6 +111,10 @@ void MainWindow::on_pushButton_Accounts_Recharge_clicked()
 
 void MainWindow::on_pushButton_Account_Chose_clicked()
 {
+    if(currentUser == nullptr){
+     QMessageBox::information(nullptr, "Current user exist", "Change user");
+    }
+    else{
     currentAccount =  new Account(dbManager->getAccountByName(ui->comboBox_Account->currentText()));
 
     ui->label_Account_Balance->setText(QString::number(currentAccount->getBalance()));
@@ -113,8 +128,24 @@ void MainWindow::on_pushButton_Account_Chose_clicked()
     }
     MainWindow::changeBalance(QString::number( currentAccount->getBalance() ));
 
-
 }
+}
+void MainWindow::on_pushButton_Accounts_changeUser_clicked()
+{
+    userWindow->show();
+}
+
+
+void MainWindow::on_pushButton_Recharging_2_clicked()
+{
+   ui->tabWidget_Accounts->setCurrentIndex(1);
+}
+void MainWindow::on_pushButton_Accounts_cancel_clicked()
+{
+  ui->tabWidget_Accounts->setCurrentIndex(1);
+}
+
+
 //Paymants
 
 void MainWindow::on_pushButton_Payments_add_clicked()
@@ -183,6 +214,7 @@ void  MainWindow::changeUsername(QString name){
 
     ui->label_userData_account_login->setText(name);
     ui->label_userData_payment_login->setText(name);
+    ui->label_userLogin5->setText(name);
 }
 void  MainWindow::changeBalance(QString balance){
 
@@ -191,11 +223,10 @@ void  MainWindow::changeBalance(QString balance){
 }
 
 
-
-
-
-void MainWindow::on_pushButton_Accounts_changeUser_clicked()
+void MainWindow::on_pushButton_Payments_cancel_clicked()
 {
-    userWindow->show();
+     ui->tabWidget_Paymants->setCurrentIndex(0);
 }
+
+
 

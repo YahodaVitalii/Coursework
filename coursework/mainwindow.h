@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+
+#include <QWidget>
 #include <QMainWindow>
 #include <QDateTime>
 #include <QSqlTableModel>
@@ -49,6 +51,12 @@ private slots:
     void on_pushButton_Payments_ChosePaymant_clicked();
     void on_pushButton_Accounts_changeUser_clicked();
 
+    void on_pushButton_Recharging_2_clicked();
+
+    void on_pushButton_Payments_cancel_clicked();
+
+    void on_pushButton_Accounts_cancel_clicked();
+
 public slots:
     void getCurrentUser(User *User);
 private:
@@ -60,9 +68,9 @@ private:
     QSqlTableModel* model;
 
 
-    User* currentUser;
-    Account* currentAccount;
-    Payment* currentPayment;
+    User* currentUser = nullptr;
+    Account* currentAccount = nullptr;
+    Payment* currentPayment = nullptr;
 
 };
 #endif // MAINWINDOW_H

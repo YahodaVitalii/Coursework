@@ -33,7 +33,7 @@ IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = coursework_resource.res
+RES_FILE      = win32\coursework_resource.res
 SED           = $(QMAKE) -install sed
 MOVE          = move
 SUBTARGETS    =  \
@@ -372,7 +372,6 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\qt_config.prf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\spec_post.prf \
-		.qmake.stash \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\exclusive_builds.prf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\common\msvc-version.conf \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\toolchain.prf \
@@ -405,6 +404,7 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Sql.prl \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Core.prl \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6EntryPoint.prl \
+		.qmake.stash \
 		..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\build_pass.prf \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Widgetsd.prl \
 		..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Guid.prl \
@@ -700,7 +700,6 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\qt_config.prf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\spec_post.prf:
-.qmake.stash:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\exclusive_builds.prf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\common\msvc-version.conf:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\toolchain.prf:
@@ -733,6 +732,7 @@ Makefile: ..\coursework\coursework.pro ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\win
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Sql.prl:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Core.prl:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6EntryPoint.prl:
+.qmake.stash:
 ..\..\..\QT\6.6.0\msvc2019_64\mkspecs\features\build_pass.prf:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Widgetsd.prl:
 ..\..\..\QT\6.6.0\msvc2019_64\lib\Qt6Guid.prl:
@@ -747,7 +747,7 @@ qmake_all: FORCE
 make_first: debug-make_first release-make_first  FORCE
 all: debug-all release-all  FORCE
 clean: debug-clean release-clean  FORCE
-	-$(DEL_FILE) coursework.vc.pdb
+	-$(DEL_FILE) win32\coursework.vc.pdb
 	-$(DEL_FILE) coursework.ilk
 	-$(DEL_FILE) coursework.idb
 distclean: debug-distclean release-distclean  FORCE

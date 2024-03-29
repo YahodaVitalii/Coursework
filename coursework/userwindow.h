@@ -2,6 +2,7 @@
 #define USERWINDOW_H
 
 #include <QDialog>
+#include <QWidget>
 #include <QDateTime>
 #include <QSqlTableModel>
 #include <QSqlQuery>
@@ -31,6 +32,10 @@ private slots:
     void on_pushButton_SingUp_SIngIn_Up_clicked();
 
     void on_pushButton_clicked();
+
+    void on_pushButton_SingUp_cancel_clicked();
+
+    void on_pushButton_Cancel_clicked();
 
 private:
     Ui::UserWindow *ui;

@@ -1,6 +1,7 @@
 #include "userwindow.h"
 #include "ui_userwindow.h"
 #include <QTabBar>
+#include <QLineEdit>
 UserWindow::UserWindow(DBManager* dbManager,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::UserWindow), dbManager(dbManager)
@@ -9,6 +10,9 @@ UserWindow::UserWindow(DBManager* dbManager,QWidget *parent) :
 
     ui->tabWidget_user->tabBar()->hide();
     ui->tabWidget_user->setCurrentIndex(0);
+
+    ui->lineEdit_SingIn_password->setEchoMode(QLineEdit::Password);
+    ui->lineEdit_SingUp_password->setEchoMode(QLineEdit::Password);
 }
 
 UserWindow::~UserWindow()
@@ -49,6 +53,7 @@ void UserWindow::on_pushButton_SingIn_SIngIn_clicked()
             QMessageBox::warning(this, "Error", "Invalid login or password", QMessageBox::Ok);
         }
         emit setCurrentUser(user);
+        close();
     }
     delete user;
 }
@@ -90,5 +95,17 @@ void UserWindow::on_pushButton_SingUp_SIngIn_Up_clicked()
 void UserWindow::on_pushButton_clicked()
 {
     ui->tabWidget_user->setCurrentIndex(0);
+}
+
+
+void UserWindow::on_pushButton_SingUp_cancel_clicked()
+{
+ ui->tabWidget_user->setCurrentIndex(0);
+}
+
+
+void UserWindow::on_pushButton_Cancel_clicked()
+{
+    close();
 }
 
